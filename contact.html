@@ -1,24 +1,104 @@
-<!-- Left: Logo -->
-<a href="index.html" class="text-2xl font-bold text-green-700">Soul Roots</a>
-<!-- Right: Navigation -->
-<nav class="flex items-center">
-    <!-- Desktop Menu -->
-    <ul class="hidden md:flex space-x-8 text-lg">
-        <li><a href="#" class="hover:text-green-600">Home</a></li>
-        <li><a href="#about" class="hover:text-green-600">About</a></li>
-        <li><a href="#retreats" class="hover:text-green-600">Retreats</a></li>
-        <li><a href="#booking" class="hover:text-green-600">Booking</a></li>
-        <li><a href="#contact" class="hover:text-green-600">Contact</a></li>
-        <li><a href="#faq" class="hover:text-green-600">FAQ</a></li>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — SoulRoots</title>
+    <meta name="description" content="Contact SoulRoots for questions or more information." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+
+    <!-- Header -->
+    <header class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-green-700">Soul Roots</a>
+        <nav class="flex items-center">
+            <ul class="hidden md:flex space-x-8 text-lg">
+                <li><a href="index.html" class="hover:text-green-600">Home</a></li>
+                <li><a href="about.html" class="hover:text-green-600">About</a></li>
+                <li><a href="retreats.html" class="hover:text-green-600">Retreats</a></li>
+                <li><a href="booking.html" class="hover:text-green-600">Booking</a></li>
+                <li><a href="contact.html" class="hover:text-green-600">Contact</a></li>
+                <li><a href="faq.html" class="hover:text-green-600">FAQ</a></li>
+            </ul>
+            <button id="menu-btn" class="md:hidden flex items-center focus:outline-none ml-4" aria-label="Toggle menu"
+                aria-expanded="false">
+                <svg class="w-8 h-8 text-green-700" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Fullscreen Menu -->
+    <ul id="nav-menu"
+        class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 hidden md:hidden transition-all duration-300">
+        <button id="close-menu-btn"
+            class="absolute top-6 right-6 text-green-700 hover:text-green-900 focus:outline-none"
+            aria-label="Close menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="6" y1="18" x2="18" y2="6" />
+            </svg>
+        </button>
+        <li><a href="index.html" class="hover:text-green-600">Home</a></li>
+        <li><a href="about.html" class="hover:text-green-600">About</a></li>
+        <li><a href="retreats.html" class="hover:text-green-600">Retreats</a></li>
+        <li><a href="booking.html" class="hover:text-green-600">Booking</a></li>
+        <li><a href="contact.html" class="hover:text-green-600">Contact</a></li>
+        <li><a href="faq.html" class="hover:text-green-600">FAQ</a></li>
     </ul>
-    <!-- Hamburger Button -->
-    <button id="menu-btn" class="md:hidden flex items-center focus:outline-none ml-4" aria-label="Toggle menu"
-        aria-expanded="false">
-        <svg class="w-8 h-8 text-green-700" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="3" y1="6" x2="21" y2="6" />
-            <line x1="3" y1="12" x2="21" y2="12" />
-            <line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
-    </button>
-</nav>
+
+    <!-- Contact Section -->
+    <section class="max-w-2xl mx-auto py-20 px-6">
+        <h1 class="text-4xl font-extrabold mb-6 text-green-800 text-center">Contact Us</h1>
+        <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" action="#" method="POST">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="name" name="name" type="text" required>
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="email" name="email" type="email" required>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Message</label>
+                <textarea id="message" name="message"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    rows="4" required></textarea>
+            </div>
+            <div class="flex items-center justify-center">
+                <button
+                    class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Send Message
+                </button>
+            </div>
+        </form>
+        <div class="text-center text-gray-600 mt-8">
+            Or email us at <a href="mailto:info@soulroots.com" class="text-green-700 underline">info@soulroots.com</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-600">
+            &copy; 2025 SoulRoots. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
