@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Retreats — SoulRoots</title>
+    <meta name="description" content="Explore SoulRoots yoga retreats and spiritual journeys." />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body class="bg-white text-gray-900 font-sans">
+
+    <!-- Header -->
+    <header class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-green-700">Soul Roots</a>
+        <nav class="flex items-center">
+            <ul class="hidden md:flex space-x-8 text-lg">
+                <li><a href="index.html" class="hover:text-green-600">Home</a></li>
+                <li><a href="about.html" class="hover:text-green-600">About</a></li>
+                <li><a href="retreats.html" class="hover:text-green-600">Retreats</a></li>
+                <li><a href="booking.html" class="hover:text-green-600">Booking</a></li>
+                <li><a href="contact.html" class="hover:text-green-600">Contact</a></li>
+                <li><a href="faq.html" class="hover:text-green-600">FAQ</a></li>
+            </ul>
+            <button id="menu-btn" class="md:hidden flex items-center focus:outline-none ml-4" aria-label="Toggle menu"
+                aria-expanded="false">
+                <svg class="w-8 h-8 text-green-700" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Fullscreen Menu -->
+    <ul id="nav-menu"
+        class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 hidden md:hidden transition-all duration-300">
+        <button id="close-menu-btn"
+            class="absolute top-6 right-6 text-green-700 hover:text-green-900 focus:outline-none"
+            aria-label="Close menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="6" x2="18" y2="18" />
+                <line x1="6" y1="18" x2="18" y2="6" />
+            </svg>
+        </button>
+        <li><a href="index.html" class="hover:text-green-600">Home</a></li>
+        <li><a href="about.html" class="hover:text-green-600">About</a></li>
+        <li><a href="retreats.html" class="hover:text-green-600">Retreats</a></li>
+        <li><a href="booking.html" class="hover:text-green-600">Booking</a></li>
+        <li><a href="contact.html" class="hover:text-green-600">Contact</a></li>
+        <li><a href="faq.html" class="hover:text-green-600">FAQ</a></li>
+    </ul>
+
+    <!-- Retreats Section -->
+    <section class="max-w-4xl mx-auto text-center py-20 px-6">
+        <h1 class="text-4xl font-extrabold mb-6 text-green-800">Our Retreats</h1>
+        <p class="text-lg text-gray-700 mb-8">
+            Discover our upcoming yoga retreats and spiritual journeys. Each retreat is designed to help you unwind,
+            grow, and connect with a like-minded community.
+        </p>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-green-50 p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold mb-2 text-green-700">Mountain Awakening</h2>
+                <p class="text-gray-700 mb-2">A 7-day yoga and hiking retreat in the Himalayas. Daily yoga, meditation,
+                    and guided treks.</p>
+                <span class="text-green-800 font-semibold">Dates: Oct 10–17, 2025</span>
+            </div>
+            <div class="bg-green-50 p-6 rounded-lg shadow">
+                <h2 class="text-2xl font-bold mb-2 text-green-700">Coastal Serenity</h2>
+                <p class="text-gray-700 mb-2">Relax by the sea with restorative yoga, mindfulness workshops, and
+                    nourishing meals.</p>
+                <span class="text-green-800 font-semibold">Dates: Nov 5–12, 2025</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 py-6 mt-12">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-600">
+            &copy; 2025 SoulRoots. All rights reserved.
+        </div>
+    </footer>
+
+    <script src=
