@@ -1,11 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const btn = document.getElementById('menu-btn');
-    const nav = document.getElementById('nav-menu');
+const menuBtn = document.getElementById('menu-btn');
+const navMenu = document.getElementById('nav-menu');
 
-    btn.addEventListener('click', () => {
-        nav.classList.toggle('hidden');
-
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        btn.setAttribute('aria-expanded', !expanded);
-    });
+menuBtn.addEventListener('click', function () {
+    navMenu.classList.toggle('hidden');
+    menuBtn.setAttribute(
+        'aria-expanded',
+        navMenu.classList.contains('hidden') ? 'false' : 'true'
+    );
 });
