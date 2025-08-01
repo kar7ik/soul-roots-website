@@ -16,9 +16,8 @@
     <!-- Navigation -->
     <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="#" class="text-2xl font-bold text-green-700">SoulRoots</a>
-
         <!-- Desktop Menu -->
-        <ul id="nav-menu" class="hidden md:flex space-x-8 text-lg">
+        <ul class="hidden md:flex space-x-8 text-lg">
             <li><a href="#" class="hover:text-green-600">Home</a></li>
             <li><a href="#about" class="hover:text-green-600">About</a></li>
             <li><a href="#retreats" class="hover:text-green-600">Retreats</a></li>
@@ -26,7 +25,6 @@
             <li><a href="#contact" class="hover:text-green-600">Contact</a></li>
             <li><a href="#faq" class="hover:text-green-600">FAQ</a></li>
         </ul>
-
         <!-- Hamburger Button -->
         <button id="menu-btn" class="md:hidden flex items-center focus:outline-none" aria-label="Toggle menu"
             aria-expanded="false">
@@ -38,6 +36,17 @@
             </svg>
         </button>
     </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <ul id="nav-menu"
+        class="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 hidden md:hidden transition-all duration-300">
+        <li><a href="#" class="hover:text-green-600">Home</a></li>
+        <li><a href="#about" class="hover:text-green-600">About</a></li>
+        <li><a href="#retreats" class="hover:text-green-600">Retreats</a></li>
+        <li><a href="#booking" class="hover:text-green-600">Booking</a></li>
+        <li><a href="#contact" class="hover:text-green-600">Contact</a></li>
+        <li><a href="#faq" class="hover:text-green-600">FAQ</a></li>
+    </ul>
 
     <!-- Hero Section -->
     <header class="max-w-4xl mx-auto text-center py-20 px-6">
