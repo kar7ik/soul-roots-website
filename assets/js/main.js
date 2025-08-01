@@ -23,4 +23,6 @@ if (closeMenuBtn) {
 document.querySelectorAll('#nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.add('hidden');
-        menuBtn.setAttribute('aria-expanded',
+        menuBtn.setAttribute('aria-expanded', 'false');
+    });
+});
