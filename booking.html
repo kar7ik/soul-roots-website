@@ -68,29 +68,20 @@
     <!-- Booking Section -->
     <section class="max-w-2xl mx-auto py-20 px-6">
         <h1 class="text-4xl font-extrabold mb-6 text-green-800 text-center">Book Your Retreat</h1>
-        <form name="booking" method="POST" data-netlify="true" action="/thankyou.html"
+        <form action="https://hook.eu2.make.com/9hxa7jb5auk09v6onicw1pj4bbve35h9" method="POST"
             class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <input type="hidden" name="form-name" value="booking">
-            <p style="display:none">
-                <label>Don’t fill this out if you’re human: <input name="bot-field"></label>
-            </p>
+            <input type="text" name="bot-field" style="display:none">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="name" name="name" type="text" required>
+                <input id="name" name="name" type="text" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="email" name="email" type="email" required>
+                <input id="email" name="email" type="email" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="retreat">Retreat</label>
-                <select id="retreat" name="retreat"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    required>
+                <select id="retreat" name="retreat" required>
                     <option value="">Select a retreat</option>
                     <option value="mountain">Mountain Awakening</option>
                     <option value="coastal">Coastal Serenity</option>
@@ -98,16 +89,10 @@
             </div>
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Message</label>
-                <textarea id="message" name="message"
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    rows="4"></textarea>
+                <textarea id="message" name="message" rows="4"></textarea>
             </div>
             <div class="flex items-center justify-center">
-                <button
-                    class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
-                    Book Now
-                </button>
+                <button type="submit">Book Now</button>
             </div>
         </form>
     </section>
