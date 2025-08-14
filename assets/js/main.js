@@ -1,3 +1,6 @@
+// ------------------------
+// Mobile Menu
+// ------------------------
 const menuBtn = document.getElementById('menu-btn');
 const navMenu = document.getElementById('nav-menu');
 const closeMenuBtn = document.getElementById('close-menu-btn');
@@ -19,7 +22,7 @@ if (closeMenuBtn) {
     });
 }
 
-// Optional: Close menu when any mobile nav link is clicked
+// Close menu when any mobile nav link is clicked
 document.querySelectorAll('#nav-menu a').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.add('hidden');
@@ -27,6 +30,7 @@ document.querySelectorAll('#nav-menu a').forEach(link => {
     });
 });
 
+// Optional: add shadow or style when scrolling
 window.addEventListener('scroll', function () {
     const header = document.querySelector('header');
     if (window.scrollY > 20) {
@@ -36,22 +40,30 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Index page carousel
+// ------------------------
+// Index page carousel (2 images visible)
+// ------------------------
 const indexCarousel = document.getElementById('index-carousel');
 const indexPrevBtn = document.getElementById('index-prev-btn');
 const indexNextBtn = document.getElementById('index-next-btn');
 
-let indexSlide = 0;
-const indexTotal = indexCarousel.children.length;
+if (indexCarousel && indexPrevBtn && indexNextBtn) {
+    let indexSlide = 0;
+    const indexTotal = indexCarousel.children.length;
 
-function showIndexSlide(i) {
-    if (i < 0) indexSlide = indexTotal - 1;
-    else if (i >= indexTotal) indexSlide = 0;
-    else indexSlide = i;
+    function showIndexSlide(i) {
+        // Looping carousel
+        if (i < 0) indexSlide = indexTotal - 2; // last 2 images
+        else if (i > indexTotal - 2) indexSlide = 0; // reset
+        else indexSlide = i;
 
-    indexCarousel.style.transform = `translateX(-${indexSlide * 100}%)`;
+        // Translate carousel by percentage (each image = 50%)
+        indexCarousel.style.transform = `translateX(-${indexSlide * 50}%)`;
+    }
+
+    indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
+    indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
+
+    // Optional: start at first slide
+    showIndexSlide(0);
 }
-
-indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
-indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
-
