@@ -75,7 +75,9 @@
                 type="text" name="bot-field" style="display:none">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
-                <input id="name" name="name" type="text" required>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="name" name="name" type="text" required>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
@@ -85,7 +87,9 @@
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="retreat">Retreat</label>
-                <select id="retreat" name="retreat" required>
+                <select
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="retreat" name="retreat" required>
                     <option value="">Select a retreat</option>
                     <option value="mountain">Mountain Awakening</option>
                     <option value="coastal">Coastal Serenity</option>
@@ -93,10 +97,16 @@
             </div>
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="message">Message</label>
-                <textarea id="message" name="message" rows="4"></textarea>
+                <textarea
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="message" name="message" rows="4"></textarea>
             </div>
             <div class="flex items-center justify-center">
-                <button type="submit">Book Now</button>
+                <button
+                    class="bg-green-700 hover:bg-green-800 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    Book Now
+                </button>
             </div>
         </form>
     </section>
