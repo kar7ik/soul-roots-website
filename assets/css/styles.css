@@ -103,3 +103,21 @@ body>section:first-of-type {
         margin-right: 1rem;
     }
 }
+
+.carousel-img {
+    width: 50%;
+    /* 2 per view on desktop */
+    height: 400px;
+    /* fixed height */
+    object-fit: cover;
+    border-radius: 0.5rem;
+    /* rounded-lg equivalent */
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        width: 100%;
+        /* 1 per view on mobile */
+    }
+}

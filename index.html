@@ -89,22 +89,18 @@
 
 
     <!-- Gallery Carousel Section -->
-    <section class="max-w-5xl mx-auto py-16 px-6 bg-white"> <!-- same background as other sections -->
-        <div class="relative overflow-hidden">
-            <div id="index-carousel" class="flex transition-transform duration-500 space-x-4 px-4 sm:px-6">
-                <img src="/assets/images/gallery_image_1_yoga.jpg" alt="Retreat Moment 1"
-                    class="flex-shrink-0 w-1/2 sm:w-full h-80 object-cover rounded-lg">
-                <img src="/assets/images/gallery_image_2_yoga.jpg" alt="Retreat Moment 2"
-                    class="flex-shrink-0 w-1/2 sm:w-full h-80 object-cover rounded-lg">
-                <img src="/assets/images/gallery_image_3_yoga.jpg" alt="Retreat Moment 3"
-                    class="flex-shrink-0 w-1/2 sm:w-full h-80 object-cover rounded-lg">
-                <img src="/assets/images/gallery_image_4_yoga.jpg" alt="Retreat Moment 4"
-                    class="flex-shrink-0 w-1/2 sm:w-full h-80 object-cover rounded-lg">
+    <section class="bg-white relative overflow-hidden">
+        <div class="relative">
+            <div id="index-carousel" class="flex transition-transform duration-500 gap-4 px-4 sm:px-6">
+                <img src="/assets/images/gallery_image_1_yoga.jpg" alt="Retreat Moment 1" class="carousel-img">
+                <img src="/assets/images/gallery_image_2_yoga.jpg" alt="Retreat Moment 2" class="carousel-img">
+                <img src="/assets/images/gallery_image_3_yoga.jpg" alt="Retreat Moment 3" class="carousel-img">
+                <img src="/assets/images/gallery_image_4_yoga.jpg" alt="Retreat Moment 4" class="carousel-img">
             </div>
 
             <!-- Left Button -->
             <button id="index-prev-btn"
-                class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-transparent hover:bg-white/20 rounded-full p-2">
+                class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white hover:bg-gray-100 rounded-full p-2 shadow-md">
                 <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" stroke-width="2"
                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
@@ -113,7 +109,7 @@
 
             <!-- Right Button -->
             <button id="index-next-btn"
-                class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-transparent hover:bg-white/20 rounded-full p-2">
+                class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white hover:bg-gray-100 rounded-full p-2 shadow-md">
                 <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" stroke-width="2"
                     viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="9 18 15 12 9 6"></polyline>
@@ -121,15 +117,13 @@
             </button>
         </div>
 
-        <div class="text-center mt-4 mb-12">
+        <div class="text-center mt-6 mb-12">
             <a href="gallery.html"
                 class="bg-green-700 text-white px-6 py-2 rounded-full font-bold hover:bg-green-800 transition">
                 Visit Gallery
             </a>
         </div>
     </section>
-
-
 
     <!-- Retreats Section -->
     <section class="max-w-5xl mx-auto py-16 px-6 bg-white">
