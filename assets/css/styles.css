@@ -8,7 +8,7 @@ body::before {
     background-image: url("/assets/images/home_background.jpg");
     background-size: cover;
     background-position: center;
-    filter: blur(8px);
+    filter: blur(1px);
     z-index: -2;
     /* Stays behind all content */
 }
