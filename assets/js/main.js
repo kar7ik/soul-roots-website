@@ -41,7 +41,7 @@ window.addEventListener('scroll', function () {
 });
 
 // ------------------------
-// Index page carousel (2 images visible)
+// Index page carousel (responsive)
 // ------------------------
 const indexCarousel = document.getElementById('index-carousel');
 const indexPrevBtn = document.getElementById('index-prev-btn');
@@ -51,19 +51,27 @@ if (indexCarousel && indexPrevBtn && indexNextBtn) {
     let indexSlide = 0;
     const indexTotal = indexCarousel.children.length;
 
+    function getImagesPerView() {
+        return window.innerWidth < 640 ? 1 : 2; // 1 image on mobile, 2 on desktop
+    }
+
     function showIndexSlide(i) {
-        // Looping carousel
-        if (i < 0) indexSlide = indexTotal - 2; // last 2 images
-        else if (i > indexTotal - 2) indexSlide = 0; // reset
+        const perView = getImagesPerView();
+        // Looping
+        if (i < 0) indexSlide = indexTotal - perView;
+        else if (i > indexTotal - perView) indexSlide = 0;
         else indexSlide = i;
 
-        // Translate carousel by percentage (each image = 50%)
-        indexCarousel.style.transform = `translateX(-${indexSlide * 50}%)`;
+        const translatePercent = (indexSlide * 100) / perView;
+        indexCarousel.style.transform = `translateX(-${translatePercent}%)`;
     }
 
     indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
     indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
 
-    // Optional: start at first slide
+    // Recalculate on resize
+    window.addEventListener('resize', () => showIndexSlide(indexSlide));
+
+    // Initial display
     showIndexSlide(0);
 }
