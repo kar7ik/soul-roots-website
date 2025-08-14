@@ -86,14 +86,45 @@
     </section>
 
     <!-- Gallery Section (contrasting bg) -->
-    <section class="max-w-5xl mx-auto py-12 px-6 bg-gray-50">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="assets/images/gallery1.jpg" alt="Retreat Moment 1"
-                class="w-full h-64 object-cover rounded-lg shadow-md">
-            <img src="assets/images/gallery2.jpg" alt="Retreat Moment 2"
-                class="w-full h-64 object-cover rounded-lg shadow-md">
-            <img src="assets/images/gallery3.jpg" alt="Retreat Moment 3"
-                class="w-full h-64 object-cover rounded-lg shadow-md">
+    <section class="max-w-7xl mx-auto py-16 px-4 bg-gray-50 relative">
+        <h2 class="text-3xl font-bold text-green-800 mb-8 text-center">Gallery</h2>
+
+        <!-- Carousel Container -->
+        <div class="relative overflow-hidden rounded-lg shadow-xl">
+            <div id="gallery-carousel" class="flex transition-transform duration-500">
+                <img src="assets/images/gallery1.jpg" alt="Retreat Moment 1"
+                    class="w-full h-[400px] object-cover flex-shrink-0">
+                <img src="assets/images/gallery2.jpg" alt="Retreat Moment 2"
+                    class="w-full h-[400px] object-cover flex-shrink-0">
+                <img src="assets/images/gallery3.jpg" alt="Retreat Moment 3"
+                    class="w-full h-[400px] object-cover flex-shrink-0">
+            </div>
+
+            <!-- Left Button -->
+            <button id="prev-btn"
+                class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md">
+                <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+
+            <!-- Right Button -->
+            <button id="next-btn"
+                class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/80 hover:bg-white rounded-full p-2 shadow-md">
+                <svg class="w-6 h-6 text-green-700" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Visit Gallery Button -->
+        <div class="text-center mt-8">
+            <a href="retreats.html#gallery"
+                class="bg-green-700 text-white px-8 py-3 rounded-full font-bold hover:bg-green-800 transition">
+                Visit Gallery
+            </a>
         </div>
     </section>
 

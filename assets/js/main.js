@@ -35,3 +35,25 @@ window.addEventListener('scroll', function () {
         header.classList.remove('scrolled');
     }
 });
+
+// Gallery Carousel
+const carousel = document.getElementById('gallery-carousel');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+let index = 0;
+const total = carousel.children.length;
+
+function showSlide(i) {
+    if (i < 0) index = total - 1;
+    else if (i >= total) index = 0;
+    else index = i;
+
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+}
+
+prevBtn.addEventListener('click', () => showSlide(index - 1));
+nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+// Optional: Auto-slide every 5 seconds
+setInterval(() => showSlide(index + 1), 5000);
