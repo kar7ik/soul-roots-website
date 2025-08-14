@@ -25,3 +25,21 @@ body::after {
     z-index: -1;
     /* Above background but below content */
 }
+
+/* Alternate section backgrounds for contrast */
+section:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.9); /* Brighter white */
+}
+
+section:nth-of-type(odd) {
+    background-color: rgba(245, 245, 245, 0.9); /* Light gray tone */
+}
+
+/* Keep the floating card style */
+section {
+    backdrop-filter: blur(4px);
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-bottom: 3rem;
+    padding: 2rem;
+}
