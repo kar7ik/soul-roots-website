@@ -1,11 +1,15 @@
 /* =========================
    BACKGROUND LAYERS
 ========================= */
+
+/* Blurred background image with dark gradient at top */
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: url("/assets/images/home_background.jpg");
+    background-image:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0) 15%),
+        url("/assets/images/home_background.jpg");
     background-size: cover;
     background-position: center;
     filter: blur(1px);
@@ -13,21 +17,50 @@ body::before {
     /* Behind all content */
 }
 
+/* White tone overlay */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     background-color: rgba(255, 255, 255, 0.5);
-    /* White tone overlay */
     z-index: -1;
     /* Above background but below content */
+}
+
+/* =========================
+   HEADER STYLING
+========================= */
+
+/* Transparent header initially */
+header {
+    background-color: rgba(255, 255, 255, 0);
+    color: #fff;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark semi-transparent header after scroll */
+header.scrolled {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(6px);
+}
+
+/* Navigation links in header */
+header a {
+    color: #f5f5f5;
+    transition: color 0.3s ease;
+}
+
+header a:hover {
+    color: #fffae3;
 }
 
 /* =========================
    SECTION STYLING
 ========================= */
 
-/* Floating card look for all sections */
+/* Floating card style */
 section {
     backdrop-filter: blur(4px);
     border-radius: 1rem;
@@ -36,18 +69,16 @@ section {
     padding: 2rem;
 }
 
-/* Alternate contrast between sections */
+/* Alternate contrast backgrounds */
 section:nth-of-type(even) {
     background-color: rgba(255, 255, 255, 0.9);
-    /* Brighter white */
 }
 
 section:nth-of-type(odd) {
     background-color: rgba(245, 245, 245, 0.9);
-    /* Light gray tone */
 }
 
-/* Images inside sections pop */
+/* Images inside sections */
 section img {
     border-radius: 0.5rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -57,7 +88,7 @@ section img {
    LAYOUT TWEAKS
 ========================= */
 
-/* Add top gap for first (Hero) section under sticky header */
+/* Gap for Hero under header */
 body>section:first-of-type {
     margin-top: 4rem;
 }
