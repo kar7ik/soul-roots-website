@@ -36,24 +36,22 @@ window.addEventListener('scroll', function () {
     }
 });
 
-// Gallery Carousel
-const carousel = document.getElementById('gallery-carousel');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
+// Index page carousel
+const indexCarousel = document.getElementById('index-carousel');
+const indexPrevBtn = document.getElementById('index-prev-btn');
+const indexNextBtn = document.getElementById('index-next-btn');
 
-let index = 0;
-const total = carousel.children.length;
+let indexSlide = 0;
+const indexTotal = indexCarousel.children.length;
 
-function showSlide(i) {
-    if (i < 0) index = total - 1;
-    else if (i >= total) index = 0;
-    else index = i;
+function showIndexSlide(i) {
+    if (i < 0) indexSlide = indexTotal - 1;
+    else if (i >= indexTotal) indexSlide = 0;
+    else indexSlide = i;
 
-    carousel.style.transform = `translateX(-${index * 100}%)`;
+    indexCarousel.style.transform = `translateX(-${indexSlide * 100}%)`;
 }
 
-prevBtn.addEventListener('click', () => showSlide(index - 1));
-nextBtn.addEventListener('click', () => showSlide(index + 1));
+indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
+indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
 
-// Optional: Auto-slide every 5 seconds
-setInterval(() => showSlide(index + 1), 5000);
