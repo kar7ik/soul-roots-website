@@ -1,45 +1,77 @@
+/* =========================
+   BACKGROUND LAYERS
+========================= */
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-image: url("/assets/images/home_background.jpg");
     background-size: cover;
     background-position: center;
     filter: blur(1px);
     z-index: -2;
-    /* Stays behind all content */
+    /* Behind all content */
 }
 
 body::after {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: rgba(255, 255, 255, 0.5);
     /* White tone overlay */
     z-index: -1;
     /* Above background but below content */
 }
 
-/* Alternate section backgrounds for contrast */
-section:nth-of-type(even) {
-    background-color: rgba(255, 255, 255, 0.9); /* Brighter white */
-}
+/* =========================
+   SECTION STYLING
+========================= */
 
-section:nth-of-type(odd) {
-    background-color: rgba(245, 245, 245, 0.9); /* Light gray tone */
-}
-
-/* Keep the floating card style */
+/* Floating card look for all sections */
 section {
     backdrop-filter: blur(4px);
     border-radius: 1rem;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     margin-bottom: 3rem;
     padding: 2rem;
+}
+
+/* Alternate contrast between sections */
+section:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Brighter white */
+}
+
+section:nth-of-type(odd) {
+    background-color: rgba(245, 245, 245, 0.9);
+    /* Light gray tone */
+}
+
+/* Images inside sections pop */
+section img {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================
+   LAYOUT TWEAKS
+========================= */
+
+/* Add top gap for first (Hero) section under sticky header */
+body>section:first-of-type {
+    margin-top: 4rem;
+}
+
+@media (min-width: 768px) {
+    body>section:first-of-type {
+        margin-top: 6rem;
+    }
+}
+
+/* Mobile: add side gap so background shows */
+@media (max-width: 768px) {
+    section {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
