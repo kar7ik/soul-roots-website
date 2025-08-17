@@ -121,22 +121,3 @@ body>section:first-of-type {
         /* 1 per view on mobile */
     }
 }
-
-/* SoulRootJourneys Theme Overrides */
-header {
-  background-color: #355E3B; /* Forest Green */
-  color: #EADBC8; /* Sand text */
-}
-
-footer {
-  background-color: #3B2F2F; /* Charcoal */
-  color: #EADBC8; /* Sand text */
-}
-
-.btn {
-  background-color: #355E3B; /* Forest Green */
-  color: #EADBC8; /* Sand */
-}
-.btn:hover {
-  background-color: #C99700; /* Golden Ochre */
-}
