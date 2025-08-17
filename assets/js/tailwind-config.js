@@ -1,4 +1,7 @@
+//Tailwind CSS configuration file
+// This file is used to extend the default Tailwind CSS configuration with custom colors.
 
+// Export the Tailwind configuration
 tailwind.config = {
   theme: {
     extend: {
