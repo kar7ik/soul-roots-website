@@ -42,7 +42,7 @@ header {
 
 /* Dark semi-transparent header after scroll */
 header.scrolled {
-    background-color: rgba(255, 255, 255, 0.46);
+    background-color: #EADBC875;
     backdrop-filter: blur(6px);
 }
 
