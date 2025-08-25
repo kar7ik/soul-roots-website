@@ -9,15 +9,11 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         message: form.message.value
     };
 
-    // 👇 Replace with your deployed Apps Script Web App URL
-    const endpoint = "https://script.google.com/macros/s/AKfycbx0aT6FzpsStIUMDIXZSQVrKTvg_SHZphvC5zyJPVdxFxZ6-DilpsOQCiBTvUP4sNCF/exec";
-
     try {
-        const response = await fetch(endpoint, {
-            method: 'POST',
+        const response = await fetch("/.netlify/functions/booking-proxy", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' },
-            mode: 'cors'
         });
 
         const text = await response.text();
@@ -25,9 +21,9 @@ document.getElementById('booking-form').addEventListener('submit', async functio
             alert('✅ Booking submitted! We will contact you soon.');
             form.reset();
         } else {
-            alert('❌ There was an error submitting your booking: ' + text);
+            alert('❌ Error submitting booking: ' + text);
         }
     } catch (err) {
-        alert('❌ There was an error submitting your booking: ' + err.message);
+        alert('❌ Error submitting booking: ' + err.message);
     }
 });
