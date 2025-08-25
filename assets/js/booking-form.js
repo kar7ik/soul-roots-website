@@ -16,6 +16,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         alert('Booking submitted! We will contact you soon.');
         form.reset();
     } catch (err) {
-        alert('There was an error submitting your booking. Please try again.');
+        alert(err.message);
     }
 });
