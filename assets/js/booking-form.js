@@ -8,14 +8,20 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         message: form.message.value
     };
     try {
-        await fetch('https://script.google.com/macros/s/AKfycbw3cp2nP5EO3c1cTGtxyaSvctJOGRGPW4u0165Yw2xVoK7grusgij7JBh07PQmk_fJS/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbw3cp2nP5EO3c1cTGtxyaSvctJOGRGPW4u0165Yw2xVoK7grusgij7JBh07PQmk_fJS/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
         });
-        alert('Booking submitted! We will contact you soon.');
-        form.reset();
+        // Google Apps Script returns status 200 even for errors, so check response text
+        const text = await response.text();
+        if (response.ok && text.trim() === "Success") {
+            alert('Booking submitted! We will contact you soon.');
+            form.reset();
+        } else {
+            alert('There was an error submitting your booking: ' + text);
+        }
     } catch (err) {
-        alert('There was an error submitting your booking. Please try again.');
+        alert('There was an error submitting your booking: ' + err.message);
     }
 });
