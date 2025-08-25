@@ -10,7 +10,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
     };
 
     // 👇 Replace with your deployed Apps Script Web App URL
-    const endpoint = "https://script.google.com/macros/s/AKfycbxCDJMhq8ABjSt6VOQxvYXxhEFU8ZyerAi24hJ-5RX3CaT3MCPDyqDZ_iVYKYioLUyW/exec";
+    const endpoint = "https://script.google.com/macros/s/AKfycbx0aT6FzpsStIUMDIXZSQVrKTvg_SHZphvC5zyJPVdxFxZ6-DilpsOQCiBTvUP4sNCF/exec";
 
     try {
         const response = await fetch(endpoint, {
