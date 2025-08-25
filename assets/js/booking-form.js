@@ -8,7 +8,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         message: form.message.value
     };
     try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbw3cp2nP5EO3c1cTGtxyaSvctJOGRGPW4u0165Yw2xVoK7grusgij7JBh07PQmk_fJS/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycby1vh7Kj9-xyC2VcGnG68mXBwYAs-jtjr3pLIzmnK-a8ju2AoUCVVjhog5ex9p08KA7/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
