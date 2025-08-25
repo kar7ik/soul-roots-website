@@ -8,7 +8,7 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         message: form.message.value
     };
     try {
-        await fetch('https://script.google.com/macros/s/AKfycbz-bFdyKPyzfzZgOSzTwVCnP0uxO0mS4dmkiRLWj8Oau27BCMPefBrjiGV1ODsHOuJC/exec', {
+        await fetch('https://script.google.com/macros/s/AKfycbw3cp2nP5EO3c1cTGtxyaSvctJOGRGPW4u0165Yw2xVoK7grusgij7JBh07PQmk_fJS/exec', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
@@ -16,6 +16,6 @@ document.getElementById('booking-form').addEventListener('submit', async functio
         alert('Booking submitted! We will contact you soon.');
         form.reset();
     } catch (err) {
-        alert(err.message);
+        alert('There was an error submitting your booking. Please try again.');
     }
 });
