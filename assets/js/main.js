@@ -58,5 +58,7 @@ function showIndexSlide(i) {
     indexCarousel.style.transform = `translateX(-${percent}%)`;
 }
 
-indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
-indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
+if (indexPrevBtn && indexNextBtn && indexCarousel) {
+    indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
+    indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
+}
