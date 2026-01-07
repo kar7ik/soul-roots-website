@@ -194,12 +194,13 @@ function showIndexSlide(i) {
         indexSlide = i;
     }
 
-    // Carousel container is 200% wide (to fit 4 images)
-    // Each image is 50% of viewport width
+    // Carousel container is 200% of viewport width (to fit 4 images)
+    // Each image is 25% of carousel = 50% of viewport
     // To show images 1-2: translateX(0%)
-    // To show images 3-4: translateX(-50%) of container = 100% of viewport
+    // To show images 3-4: translateX(-50%) of carousel = 100% of viewport
     
-    // Simple calculation: move by 50% of container width for each slide
+    // Move by 50% of carousel width for each slide
+    // This moves the viewport by 100% (showing next 2 images)
     const percent = indexSlide * 50;
     indexCarousel.style.transform = `translateX(-${percent}%)`;
 }
@@ -208,31 +209,37 @@ function showIndexSlide(i) {
 if (indexCarousel) {
     updateSlideCount();
     
-    // Wait for images to load before calculating positions
+    // Set initial position immediately
+    indexCarousel.style.transform = 'translateX(0%)';
+    indexSlide = 0;
+    
+    // Also set after a short delay to ensure DOM is ready
+    setTimeout(() => {
+        showIndexSlide(0);
+    }, 100);
+    
+    // Wait for images to load and recalculate
     const images = indexCarousel.querySelectorAll('img');
     let imagesLoaded = 0;
     
     if (images.length > 0) {
+        const checkAllLoaded = () => {
+            if (imagesLoaded === images.length) {
+                showIndexSlide(0);
+            }
+        };
+        
         images.forEach(img => {
             if (img.complete) {
                 imagesLoaded++;
+                checkAllLoaded();
             } else {
                 img.addEventListener('load', () => {
                     imagesLoaded++;
-                    if (imagesLoaded === images.length) {
-                        showIndexSlide(0);
-                    }
-                });
+                    checkAllLoaded();
+                }, { once: true });
             }
         });
-        
-        if (imagesLoaded === images.length) {
-            // All images already loaded
-            setTimeout(() => showIndexSlide(0), 100);
-        }
-    } else {
-        // No images, just set initial position
-        showIndexSlide(0);
     }
     
     window.addEventListener('resize', () => {

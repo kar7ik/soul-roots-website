@@ -353,6 +353,12 @@ body > section:first-of-type {
    CAROUSEL STYLES
 ========================= */
 
+/* Ensure parent container clips overflow */
+#gallery .relative,
+#gallery > div {
+    overflow: hidden;
+}
+
 #index-carousel {
     display: flex;
     width: 200%;
@@ -365,22 +371,17 @@ body > section:first-of-type {
     will-change: transform;
 }
 
-/* Ensure parent container clips overflow */
-#gallery .relative,
-#gallery > div {
-    overflow: hidden;
-}
-
 .carousel-img {
-    width: calc(50% - var(--spacing-sm));
-    min-width: calc(50% - var(--spacing-sm));
+    /* Each image is 50% of the viewport (parent container), not 50% of carousel */
+    /* Since carousel is 200% wide, each image should be 25% of carousel = 50% of viewport */
+    width: calc(25% - var(--spacing-sm));
+    min-width: calc(25% - var(--spacing-sm));
     height: 450px;
     object-fit: cover;
     border-radius: var(--radius-lg);
     flex-shrink: 0;
     transition: transform var(--transition-base);
     box-shadow: var(--shadow-lg);
-    max-width: 100%;
     box-sizing: border-box;
     display: block;
     opacity: 1;
