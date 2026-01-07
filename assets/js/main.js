@@ -183,11 +183,27 @@ function showIndexSlide(i) {
     if (!indexCarousel) return;
     
     const total = indexCarousel.children.length;
-    if (i < 0) indexSlide = total - slideCount;
-    else if (i > total - slideCount) indexSlide = 0;
-    else indexSlide = i;
+    const maxSlides = Math.max(0, total - slideCount);
+    
+    // Handle wrapping
+    if (i < 0) {
+        indexSlide = maxSlides;
+    } else if (i > maxSlides) {
+        indexSlide = 0;
+    } else {
+        indexSlide = i;
+    }
 
-    const percent = (indexSlide * (100 / slideCount));
+    // Calculate transform based on actual image width
+    // Each image is 50% of viewport width (with gap)
+    // To show next 2 images, we need to move by 100% of viewport width
+    // But transform percentages are relative to the element's width
+    // The carousel container is wider than viewport (to fit all images)
+    // So we calculate: (slideIndex * imagesPerSlide * imageWidth) / containerWidth
+    
+    // Simpler approach: move by 50% of container for each slide
+    // Since container is 200% wide (4 images × 50%), moving 50% = showing next 2 images
+    const percent = indexSlide * 50;
     indexCarousel.style.transform = `translateX(-${percent}%)`;
 }
 

@@ -361,6 +361,8 @@ body > section:first-of-type {
     gap: var(--spacing-md);
     padding: 0;
     box-sizing: border-box;
+    transition: transform 0.5s ease;
+    will-change: transform;
 }
 
 .carousel-img {
@@ -374,6 +376,18 @@ body > section:first-of-type {
     box-shadow: var(--shadow-lg);
     max-width: 100%;
     box-sizing: border-box;
+}
+
+/* Ensure carousel container allows proper scrolling */
+#index-carousel {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    gap: var(--spacing-md);
+    padding: 0;
+    box-sizing: border-box;
+    transition: transform 0.5s ease;
 }
 
 .carousel-img:hover {
