@@ -353,10 +353,21 @@ body > section:first-of-type {
    CAROUSEL STYLES
 ========================= */
 
-/* Ensure parent container clips overflow */
-#gallery .relative,
-#gallery > div {
+/* Ensure parent container clips overflow for carousel only */
+#gallery > div.relative {
     overflow: hidden;
+}
+
+/* Section should not clip the button */
+#gallery {
+    overflow: visible;
+}
+
+/* Button container should be fully visible */
+#gallery > div.text-center {
+    overflow: visible;
+    position: relative;
+    z-index: 1;
 }
 
 #index-carousel {
