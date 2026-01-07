@@ -88,7 +88,8 @@ handleScroll();
 
 // Set active navigation link based on current page
 function setActiveNavLink() {
-    // Get current path and normalize it
+    // Get current URL and pathname
+    const currentUrl = window.location.href;
     const currentPath = window.location.pathname;
     const currentPage = currentPath.split('/').pop() || '';
     
@@ -109,7 +110,7 @@ function setActiveNavLink() {
     
     // Get filename from current path
     let currentFileName = currentPage;
-    if (!currentFileName || currentFileName === '') {
+    if (!currentFileName || currentFileName === '' || currentPath === '/' || currentPath.endsWith('/')) {
         // We're on root/homepage
         currentFileName = 'index.html';
     } else {
@@ -124,8 +125,32 @@ function setActiveNavLink() {
         // Remove any existing aria-current
         link.removeAttribute('aria-current');
         
-        // Check if this link matches current page
-        if (normalizedLink === currentFileName) {
+        // Method 1: Compare normalized paths
+        let isActive = normalizedLink === currentFileName;
+        
+        // Method 2: Fallback - check if link's resolved URL matches current URL
+        if (!isActive && linkPath) {
+            try {
+                const linkUrl = new URL(linkPath, window.location.origin);
+                const currentUrlObj = new URL(currentUrl);
+                // Compare pathnames (ignore hash and search)
+                if (linkUrl.pathname === currentUrlObj.pathname || 
+                    (linkUrl.pathname === '/' && currentUrlObj.pathname === '/') ||
+                    (linkUrl.pathname.endsWith('/index.html') && currentUrlObj.pathname === '/') ||
+                    (linkUrl.pathname === '/' && currentUrlObj.pathname.endsWith('/index.html'))) {
+                    isActive = true;
+                }
+            } catch (e) {
+                // If URL parsing fails, fall back to simple string comparison
+                const resolvedPath = new URL(linkPath, window.location.origin).pathname;
+                if (resolvedPath === currentPath || 
+                    (resolvedPath === '/index.html' && currentPath === '/')) {
+                    isActive = true;
+                }
+            }
+        }
+        
+        if (isActive) {
             link.setAttribute('aria-current', 'page');
         }
     });
