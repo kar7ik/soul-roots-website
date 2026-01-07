@@ -179,13 +179,9 @@ function updateSlideCount() {
     else slideCount = 2;
 }
 
-updateSlideCount();
-window.addEventListener('resize', () => {
-    updateSlideCount();
-    showIndexSlide(indexSlide); // update transform
-});
-
 function showIndexSlide(i) {
+    if (!indexCarousel) return;
+    
     const total = indexCarousel.children.length;
     if (i < 0) indexSlide = total - slideCount;
     else if (i > total - slideCount) indexSlide = 0;
@@ -193,6 +189,18 @@ function showIndexSlide(i) {
 
     const percent = (indexSlide * (100 / slideCount));
     indexCarousel.style.transform = `translateX(-${percent}%)`;
+}
+
+// Initialize carousel
+if (indexCarousel) {
+    updateSlideCount();
+    // Set initial position to show first slide(s) properly
+    showIndexSlide(0);
+    
+    window.addEventListener('resize', () => {
+        updateSlideCount();
+        showIndexSlide(indexSlide); // update transform
+    });
 }
 
 if (indexPrevBtn && indexNextBtn && indexCarousel) {
