@@ -91,18 +91,31 @@ function setActiveNavLink() {
     const currentPath = window.location.pathname;
     const currentPage = currentPath.split('/').pop() || 'index.html';
     
+    // Also handle root path
+    const isHomePage = currentPage === '' || currentPage === 'index.html' || currentPath.endsWith('/');
+    
     document.querySelectorAll('header nav a, #nav-menu a').forEach(link => {
         const linkPath = link.getAttribute('href');
-        if (linkPath === currentPage || (currentPage === '' && linkPath === 'index.html')) {
+        const linkHref = linkPath || '';
+        
+        // Remove any existing aria-current
+        link.removeAttribute('aria-current');
+        
+        // Check if this link matches current page
+        if (isHomePage && (linkHref === 'index.html' || linkHref === '')) {
             link.setAttribute('aria-current', 'page');
-        } else {
-            link.removeAttribute('aria-current');
+        } else if (!isHomePage && linkHref === currentPage) {
+            link.setAttribute('aria-current', 'page');
         }
     });
 }
 
-// Run on page load
-setActiveNavLink();
+// Run on page load and when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setActiveNavLink);
+} else {
+    setActiveNavLink();
+}
 
 // Index carousel
 const indexCarousel = document.getElementById('index-carousel');

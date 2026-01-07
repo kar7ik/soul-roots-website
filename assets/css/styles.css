@@ -159,7 +159,7 @@ header {
     border-bottom: 1px solid transparent;
     border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     margin: 0 var(--spacing-md);
-    margin-top: var(--spacing-md);
+    margin-top: 0;
 }
 
 /* Translucent header after scroll */
@@ -190,13 +190,16 @@ header a:hover {
     color: var(--color-ochre);
 }
 
-/* Active link indicator */
-header nav a[aria-current="page"] {
-    color: var(--color-ochre);
+/* Active link indicator - works for both desktop and mobile nav */
+header a[aria-current="page"],
+#nav-menu a[aria-current="page"] {
+    color: var(--color-ochre) !important;
     font-weight: 600;
+    position: relative;
 }
 
-header nav a[aria-current="page"]::after {
+header nav a[aria-current="page"]::after,
+header nav ul li a[aria-current="page"]::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -205,6 +208,13 @@ header nav a[aria-current="page"]::after {
     height: 2px;
     background-color: var(--color-ochre);
     border-radius: var(--radius-full);
+    display: block;
+}
+
+/* Ensure mobile menu active links also show indicator */
+#nav-menu a[aria-current="page"] {
+    border-bottom: 2px solid var(--color-ochre);
+    padding-bottom: 2px;
 }
 
 
