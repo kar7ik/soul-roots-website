@@ -17,7 +17,7 @@ class Toast {
         }
     }
 
-    show(message, type = 'info', duration = 5000) {
+    show(message, type = 'info', duration = 8000) {
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
         toast.setAttribute('role', 'alert');
@@ -78,15 +78,15 @@ class Toast {
         }, 300);
     }
 
-    success(message, duration = 5000) {
+    success(message, duration = 8000) {
         return this.show(message, 'success', duration);
     }
 
-    error(message, duration = 6000) {
+    error(message, duration = 10000) {
         return this.show(message, 'error', duration);
     }
 
-    info(message, duration = 5000) {
+    info(message, duration = 8000) {
         return this.show(message, 'info', duration);
     }
 }
