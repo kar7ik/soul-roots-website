@@ -88,23 +88,44 @@ handleScroll();
 
 // Set active navigation link based on current page
 function setActiveNavLink() {
+    // Get current path and normalize it
     const currentPath = window.location.pathname;
-    const currentPage = currentPath.split('/').pop() || 'index.html';
+    const currentPage = currentPath.split('/').pop() || '';
     
-    // Also handle root path
-    const isHomePage = currentPage === '' || currentPage === 'index.html' || currentPath.endsWith('/');
+    // Normalize path - handle root, index.html, and other pages
+    function normalizePath(path) {
+        if (!path) return '';
+        // Remove leading/trailing slashes
+        path = path.replace(/^\/+|\/+$/g, '');
+        // Handle empty path or root as index.html
+        if (!path || path === '' || path === 'index' || path === 'index.html') {
+            return 'index.html';
+        }
+        // Remove .html extension for comparison (Netlify might serve without it)
+        path = path.replace(/\.html$/, '');
+        // Add .html back for consistent matching
+        return path + '.html';
+    }
+    
+    // Get filename from current path
+    let currentFileName = currentPage;
+    if (!currentFileName || currentFileName === '') {
+        // We're on root/homepage
+        currentFileName = 'index.html';
+    } else {
+        // Remove .html if present, then add it back for consistency
+        currentFileName = currentFileName.replace(/\.html$/, '') + '.html';
+    }
     
     document.querySelectorAll('header nav a, #nav-menu a').forEach(link => {
         const linkPath = link.getAttribute('href');
-        const linkHref = linkPath || '';
+        const normalizedLink = normalizePath(linkPath);
         
         // Remove any existing aria-current
         link.removeAttribute('aria-current');
         
         // Check if this link matches current page
-        if (isHomePage && (linkHref === 'index.html' || linkHref === '')) {
-            link.setAttribute('aria-current', 'page');
-        } else if (!isHomePage && linkHref === currentPage) {
+        if (normalizedLink === currentFileName) {
             link.setAttribute('aria-current', 'page');
         }
     });
@@ -116,6 +137,9 @@ if (document.readyState === 'loading') {
 } else {
     setActiveNavLink();
 }
+
+// Also run after a short delay to ensure DOM is fully ready
+setTimeout(setActiveNavLink, 100);
 
 // Index carousel
 const indexCarousel = document.getElementById('index-carousel');
