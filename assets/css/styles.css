@@ -355,14 +355,20 @@ body > section:first-of-type {
 
 #index-carousel {
     display: flex;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
+    width: 200%;
+    min-width: 200%;
+    overflow: visible;
     gap: var(--spacing-md);
     padding: 0;
     box-sizing: border-box;
     transition: transform 0.5s ease;
     will-change: transform;
+}
+
+/* Ensure parent container clips overflow */
+#gallery .relative,
+#gallery > div {
+    overflow: hidden;
 }
 
 .carousel-img {
