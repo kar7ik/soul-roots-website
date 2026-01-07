@@ -194,22 +194,26 @@ function showIndexSlide(i) {
         indexSlide = i;
     }
 
-    // Calculate transform using actual element dimensions
-    // Get the first image to calculate its width including gap
-    const firstImage = indexCarousel.children[0];
-    if (firstImage) {
-        const imageRect = firstImage.getBoundingClientRect();
-        const containerRect = indexCarousel.parentElement.getBoundingClientRect();
-        const gap = 16; // var(--spacing-md) = 1rem = 16px typically
+    // Simplified calculation: each image is 50% width
+    // To move from images 1-2 to images 3-4, we move by 100% of viewport
+    // But transform percentages are relative to the element's own width
+    // The carousel container is 200% wide (4 images × 50% each)
+    // So moving by 50% of container = 100% of viewport = next 2 images
+    
+    // Calculate based on viewport-relative movement
+    // Each slide moves by 100% of the visible container width
+    const parentContainer = indexCarousel.parentElement;
+    if (parentContainer) {
+        const viewportWidth = parentContainer.getBoundingClientRect().width;
+        const carouselWidth = indexCarousel.scrollWidth;
         
-        // Calculate how much to move: slideIndex * (imageWidth + gap) * slideCount
-        const moveDistance = indexSlide * (imageRect.width + gap) * slideCount;
-        const containerWidth = containerRect.width;
-        const percent = (moveDistance / containerWidth) * 100;
+        // Move by viewport width for each slide
+        const movePixels = indexSlide * viewportWidth;
+        const movePercent = (movePixels / carouselWidth) * 100;
         
-        indexCarousel.style.transform = `translateX(-${percent}%)`;
+        indexCarousel.style.transform = `translateX(-${movePercent}%)`;
     } else {
-        // Fallback: use percentage calculation
+        // Fallback calculation
         const percent = indexSlide * 50;
         indexCarousel.style.transform = `translateX(-${percent}%)`;
     }
@@ -218,8 +222,33 @@ function showIndexSlide(i) {
 // Initialize carousel
 if (indexCarousel) {
     updateSlideCount();
-    // Set initial position to show first slide(s) properly
-    showIndexSlide(0);
+    
+    // Wait for images to load before calculating positions
+    const images = indexCarousel.querySelectorAll('img');
+    let imagesLoaded = 0;
+    
+    if (images.length > 0) {
+        images.forEach(img => {
+            if (img.complete) {
+                imagesLoaded++;
+            } else {
+                img.addEventListener('load', () => {
+                    imagesLoaded++;
+                    if (imagesLoaded === images.length) {
+                        showIndexSlide(0);
+                    }
+                });
+            }
+        });
+        
+        if (imagesLoaded === images.length) {
+            // All images already loaded
+            setTimeout(() => showIndexSlide(0), 100);
+        }
+    } else {
+        // No images, just set initial position
+        showIndexSlide(0);
+    }
     
     window.addEventListener('resize', () => {
         updateSlideCount();

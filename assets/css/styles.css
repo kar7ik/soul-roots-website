@@ -376,6 +376,8 @@ body > section:first-of-type {
     box-shadow: var(--shadow-lg);
     max-width: 100%;
     box-sizing: border-box;
+    display: block;
+    opacity: 1;
 }
 
 /* Ensure carousel container allows proper scrolling */
