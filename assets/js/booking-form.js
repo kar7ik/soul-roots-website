@@ -29,13 +29,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const text = await response.text();
             if (response.ok && text.trim() === "Success") {
-                alert('✅ Booking submitted! We will contact you soon.');
+                toast.success('Booking submitted! We will contact you soon.');
                 form.reset();
             } else {
-                alert('❌ Error submitting booking: ' + text);
+                toast.error('Error submitting booking: ' + text);
             }
         } catch (err) {
-            alert('❌ Error submitting booking: ' + err.message);
+            toast.error('Error submitting booking: ' + err.message);
         } finally {
             // Re-enable button
             submitBtn.disabled = false;

@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const text = await response.text();
                 if (response.ok && text.trim() === "Success") {
-                    alert('✅ Message sent! We will get back to you soon.');
+                    toast.success('Message sent! We will get back to you soon.');
                     form.reset();
                 } else {
-                    alert('❌ Error sending message: ' + text);
+                    toast.error('Error sending message: ' + text);
                 }
             } catch (err) {
-                alert('❌ Error sending message: ' + err.message);
+                toast.error('Error sending message: ' + err.message);
             } finally {
                 // Re-enable button
                 submitBtn.disabled = false;
