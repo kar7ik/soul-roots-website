@@ -22,6 +22,16 @@ document.querySelectorAll('#nav-menu a').forEach(link => {
     });
 });
 
+// Close menu when clicking backdrop (replaces inline onclick)
+const navMenuBackdrop = document.querySelector('#nav-menu > div:first-child');
+if (navMenuBackdrop) {
+    navMenuBackdrop.addEventListener('click', () => {
+        if (closeMenuBtn) {
+            closeMenuBtn.click();
+        }
+    });
+}
+
 // Scroll header effect
 window.addEventListener('scroll', () => {
     const header = document.querySelector('header');
@@ -61,4 +71,18 @@ function showIndexSlide(i) {
 if (indexPrevBtn && indexNextBtn && indexCarousel) {
     indexPrevBtn.addEventListener('click', () => showIndexSlide(indexSlide - 1));
     indexNextBtn.addEventListener('click', () => showIndexSlide(indexSlide + 1));
+    
+    // Keyboard navigation for carousel
+    indexCarousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            showIndexSlide(indexSlide - 1);
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            showIndexSlide(indexSlide + 1);
+        }
+    });
+    
+    // Make carousel focusable for keyboard navigation
+    indexCarousel.setAttribute('tabindex', '0');
 }

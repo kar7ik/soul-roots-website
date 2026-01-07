@@ -1,29 +1,46 @@
-document.getElementById('booking-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = e.target;
+document.addEventListener('DOMContentLoaded', function () {
+    const bookingForm = document.getElementById('booking-form');
+    if (!bookingForm) return;
 
-    const data = {
-        name: form.name.value,
-        email: form.email.value,
-        retreat: form.retreat.value,
-        message: form.message.value
-    };
+    bookingForm.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const form = e.target;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
 
-    try {
-        const response = await fetch("/.netlify/functions/booking-proxy", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
-        });
+        // Disable button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-        const text = await response.text();
-        if (response.ok && text.trim() === "Success") {
-            alert('✅ Booking submitted! We will contact you soon.');
-            form.reset();
-        } else {
-            alert('❌ Error submitting booking: ' + text);
+        const data = {
+            name: form.name.value,
+            email: form.email.value,
+            retreat: form.retreat.value,
+            message: form.message.value
+        };
+
+        try {
+            const response = await fetch("/.netlify/functions/booking-proxy", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+            });
+
+            const text = await response.text();
+            if (response.ok && text.trim() === "Success") {
+                alert('✅ Booking submitted! We will contact you soon.');
+                form.reset();
+            } else {
+                alert('❌ Error submitting booking: ' + text);
+            }
+        } catch (err) {
+            alert('❌ Error submitting booking: ' + err.message);
+        } finally {
+            // Re-enable button
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
         }
-    } catch (err) {
-        alert('❌ Error submitting booking: ' + err.message);
-    }
+    });
 });

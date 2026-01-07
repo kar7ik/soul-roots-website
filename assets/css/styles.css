@@ -121,3 +121,21 @@ body>section:first-of-type {
         /* 1 per view on mobile */
     }
 }
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better focus styles for accessibility */
+a:focus,
+button:focus {
+    outline: 2px solid #1F6E4F;
+    outline-offset: 2px;
+}
+
+/* Prevent layout shift on image load */
+img {
+    max-width: 100%;
+    height: auto;
+}
