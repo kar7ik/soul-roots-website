@@ -159,7 +159,7 @@ body::after {
 ========================= */
 
 header {
-    position: sticky;
+    position: sticky !important; /* Ensure sticky positioning */
     top: 0;
     z-index: var(--z-sticky);
     background-color: var(--color-sand);
@@ -167,33 +167,40 @@ header {
     transition: background-color var(--transition-base), 
                 backdrop-filter var(--transition-base),
                 box-shadow var(--transition-base),
-                border-radius var(--transition-base);
+                border-radius var(--transition-base),
+                opacity var(--transition-base);
     border-bottom: 1px solid transparent;
     border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     margin: 0 var(--spacing-md);
     margin-top: 0;
     width: calc(100% - 2 * var(--spacing-md));
-    max-width: 100%;
+    max-width: var(--max-w-7xl);
     box-sizing: border-box;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* Translucent header after scroll */
 header.scrolled {
-    background-color: rgba(246, 240, 230, 0.65);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border-bottom-color: rgba(31, 110, 79, 0.1);
+    background-color: rgba(246, 240, 230, 0.7) !important; /* Slightly more opaque for better visibility */
+    backdrop-filter: blur(15px) saturate(180%);
+    -webkit-backdrop-filter: blur(15px) saturate(180%);
+    box-shadow: var(--shadow-md);
+    border-bottom-color: rgba(31, 110, 79, 0.15);
 }
 
 @media (max-width: 768px) {
     header {
-        margin: 0;
+        margin: 0 !important;
         margin-top: 0;
         border-radius: 0;
-        width: 100%;
+        width: 100% !important;
+        max-width: 100% !important;
+        left: 0 !important;
+        transform: none !important;
         padding-left: var(--spacing-md);
         padding-right: var(--spacing-md);
+        position: sticky !important;
     }
 }
 
