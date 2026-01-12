@@ -57,27 +57,21 @@ document.addEventListener('keydown', (e) => {
 });
 
 // Scroll header effect with throttling for performance
-// This makes the header transparent when scrolling down on all pages
 let lastScroll = 0;
-let scrollTimeout = null;
-
 function handleScroll() {
     const header = document.querySelector('header');
     if (!header) return;
     
-    const currentScroll = window.scrollY || window.pageYOffset;
-    
-    // Add scrolled class when user scrolls down more than 50px
-    if (currentScroll > 50) {
+    const currentScroll = window.scrollY;
+    if (currentScroll > 20) {
         header.classList.add('scrolled');
     } else {
         header.classList.remove('scrolled');
     }
-    
     lastScroll = currentScroll;
 }
 
-// Throttle scroll events for better performance
+// Throttle scroll events
 let ticking = false;
 window.addEventListener('scroll', () => {
     if (!ticking) {
@@ -87,14 +81,9 @@ window.addEventListener('scroll', () => {
         });
         ticking = true;
     }
-}, { passive: true });
-
-// Set initial header state on page load
-document.addEventListener('DOMContentLoaded', () => {
-    handleScroll();
 });
 
-// Also set initial state immediately in case DOMContentLoaded already fired
+// Set initial header state
 handleScroll();
 
 // Set active navigation link based on current page
