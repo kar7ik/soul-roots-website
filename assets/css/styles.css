@@ -23,7 +23,7 @@
     --color-gray-900: #111827;
     --color-green-800: #166534;
     --color-green-900: #14532d;
-    
+
     /* Spacing Scale */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
@@ -33,7 +33,7 @@
     --spacing-2xl: 3rem;
     --spacing-3xl: 4rem;
     --spacing-4xl: 5rem;
-    
+
     /* Typography */
     --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --font-size-xs: 0.75rem;
@@ -45,25 +45,25 @@
     --font-size-3xl: 1.875rem;
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-base: 300ms ease;
     --transition-slow: 500ms ease;
-    
+
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    
+
     /* Border Radius */
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
     --radius-full: 9999px;
-    
+
     /* Z-index Scale */
     --z-base: 1;
     --z-dropdown: 1000;
@@ -94,9 +94,7 @@ html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100%;
+    /* Removed overflow-x: hidden; and width properties here to let the viewport manage scroll */
 }
 
 body {
@@ -104,9 +102,11 @@ body {
     line-height: 1.6;
     color: var(--color-charcoal);
     background-color: var(--color-sand);
-    overflow-x: hidden;
+    /* Keep overflow-x hidden ONLY if strictly necessary for mobile horizontal scroll prevention, 
+       but removing it is safer for sticky headers if you don't have overflowing content. */
+    overflow-x: clip;
+    /* 'clip' is safer than 'hidden' for sticky elements if supported, otherwise try removing this line */
     width: 100%;
-    max-width: 100vw;
     position: relative;
 }
 
@@ -164,10 +164,10 @@ header {
     z-index: var(--z-sticky);
     background-color: var(--color-sand);
     color: var(--color-forest);
-    transition: background-color var(--transition-base), 
-                backdrop-filter var(--transition-base),
-                box-shadow var(--transition-base),
-                border-radius var(--transition-base);
+    transition: background-color var(--transition-base),
+        backdrop-filter var(--transition-base),
+        box-shadow var(--transition-base),
+        border-radius var(--transition-base);
     border-bottom: 1px solid transparent;
     border-radius: 0 0 var(--radius-xl) var(--radius-xl);
     margin: 0 var(--spacing-md);
@@ -296,7 +296,11 @@ section img:hover {
 }
 
 /* Prevent horizontal overflow on all elements */
-img, video, iframe, embed, object {
+img,
+video,
+iframe,
+embed,
+object {
     max-width: 100%;
     height: auto;
 }
@@ -313,26 +317,28 @@ img, video, iframe, embed, object {
         width: 20% !important;
         max-width: 20% !important;
     }
-    
+
     .w-4\/5 {
         width: 80% !important;
         max-width: 80% !important;
     }
-    
+
     /* Ensure padding doesn't cause overflow */
-    .px-6, .px-4, .px-8 {
+    .px-6,
+    .px-4,
+    .px-8 {
         padding-left: var(--spacing-md) !important;
         padding-right: var(--spacing-md) !important;
     }
 }
 
 /* Gap for Hero under header */
-body > section:first-of-type {
+body>section:first-of-type {
     margin-top: var(--spacing-3xl);
 }
 
 @media (min-width: 768px) {
-    body > section:first-of-type {
+    body>section:first-of-type {
         margin-top: var(--spacing-4xl);
     }
 }
@@ -354,7 +360,7 @@ body > section:first-of-type {
 ========================= */
 
 /* Ensure parent container clips overflow for carousel only */
-#gallery > div.relative {
+#gallery>div.relative {
     overflow: hidden;
 }
 
@@ -364,7 +370,7 @@ body > section:first-of-type {
 }
 
 /* Button container should be fully visible */
-#gallery > div.text-center {
+#gallery>div.text-center {
     overflow: visible;
     position: relative;
     z-index: 1;
@@ -422,7 +428,7 @@ body > section:first-of-type {
         max-width: 100%;
         height: 350px;
     }
-    
+
     #index-carousel {
         gap: var(--spacing-sm);
         width: 100%;
@@ -430,7 +436,7 @@ body > section:first-of-type {
         padding: 0;
         margin: 0;
     }
-    
+
     /* Ensure carousel buttons don't overflow */
     #index-prev-btn,
     #index-next-btn {
@@ -463,12 +469,12 @@ body > section:first-of-type {
 
 /* Ensure mobile menu doesn't cause overflow */
 @media (max-width: 768px) {
-    #nav-menu > div:first-child {
+    #nav-menu>div:first-child {
         width: 20%;
         max-width: 20%;
     }
-    
-    #nav-menu > ul {
+
+    #nav-menu>ul {
         width: 80%;
         max-width: 80%;
     }
@@ -617,7 +623,7 @@ footer a:hover {
         max-width: calc(100% - 2 * var(--spacing-md));
         width: calc(100% - 2 * var(--spacing-md));
     }
-    
+
     .toast {
         min-width: auto;
         width: 100%;
@@ -633,11 +639,11 @@ footer a:hover {
     h1 {
         font-size: var(--font-size-3xl);
     }
-    
+
     h2 {
         font-size: var(--font-size-2xl);
     }
-    
+
     h3 {
         font-size: var(--font-size-xl);
     }
