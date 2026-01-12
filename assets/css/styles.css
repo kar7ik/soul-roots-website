@@ -455,11 +455,15 @@ body>section:first-of-type {
     inset: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1050;
-    display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
     box-sizing: border-box;
+}
+
+/* Show lightbox when it has the 'flex' class (added by JavaScript) */
+#lightbox.flex {
+    display: flex !important;
 }
 
 #lightbox-img {

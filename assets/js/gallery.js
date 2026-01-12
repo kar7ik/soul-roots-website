@@ -45,10 +45,16 @@ galleryImages.forEach((img, index) => {
 });
 
 // Close lightbox
-closeLightbox.addEventListener('click', () => {
-    lightbox.classList.add('hidden');
-    lightbox.classList.remove('flex');
-});
+if (closeLightbox) {
+    closeLightbox.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (lightbox) {
+            lightbox.classList.add('hidden');
+            lightbox.classList.remove('flex');
+        }
+    });
+}
 
 // Close lightbox when clicking backdrop
 lightbox.addEventListener('click', (e) => {
