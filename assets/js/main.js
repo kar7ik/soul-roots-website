@@ -194,11 +194,25 @@ function showIndexSlide(i) {
         indexSlide = i;
     }
 
-    // Calculate transform percentage based on slideCount
-    // Desktop (slideCount = 2): Move by 50% of carousel per slide (shows 2 images)
-    // Mobile (slideCount = 1): Move by 100% of carousel per slide (shows 1 image)
-    // Carousel width: Desktop = 200% (4 images at 50% each), Mobile = 400% (4 images at 100% each)
-    const percentPerSlide = 100 / slideCount; // 50% for desktop, 100% for mobile
+    // Calculate transform percentage based on screen size
+    // Desktop: carousel is 200% wide, each image is 25% of carousel (50% of viewport)
+    //   - To show images 1-2: translateX(0%)
+    //   - To show images 3-4: translateX(-50%) of carousel
+    // Mobile: carousel is 400% wide, each image is 25% of carousel (100% of viewport)
+    //   - To show image 1: translateX(0%)
+    //   - To show image 2: translateX(-25%) of carousel
+    //   - To show image 3: translateX(-50%) of carousel
+    //   - To show image 4: translateX(-75%) of carousel
+    
+    let percentPerSlide;
+    if (window.innerWidth < 768) {
+        // Mobile: each image is 25% of carousel (400% wide)
+        percentPerSlide = 25;
+    } else {
+        // Desktop: move by 50% of carousel (200% wide) to show next 2 images
+        percentPerSlide = 50;
+    }
+    
     const percent = indexSlide * percentPerSlide;
     indexCarousel.style.transform = `translateX(-${percent}%)`;
 }

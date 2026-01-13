@@ -414,16 +414,20 @@ body>section:first-of-type {
 
 @media (max-width: 768px) {
     .carousel-img {
-        width: 100%;
-        min-width: 100%;
-        max-width: 100%;
+        width: 25%;
+        /* Mobile: Carousel is 400% wide, each image is 25% of carousel = 100% of viewport */
+        min-width: 25%;
+        max-width: 25%;
         height: 350px;
+        object-fit: contain;
+        /* Show full image without cropping */
+        object-position: center;
     }
 
     #index-carousel {
         gap: var(--spacing-sm);
         width: 400%;
-        /* Mobile: 4 images at 100% each = 400% */
+        /* Mobile: 4 images at 25% each of carousel = 100% viewport each */
         min-width: 400%;
         max-width: 400%;
         padding: 0;
