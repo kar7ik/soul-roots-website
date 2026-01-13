@@ -194,14 +194,12 @@ function showIndexSlide(i) {
         indexSlide = i;
     }
 
-    // Carousel container is 200% of viewport width (to fit 4 images)
-    // Each image is 25% of carousel = 50% of viewport
-    // To show images 1-2: translateX(0%)
-    // To show images 3-4: translateX(-50%) of carousel = 100% of viewport
-    
-    // Move by 50% of carousel width for each slide
-    // This moves the viewport by 100% (showing next 2 images)
-    const percent = indexSlide * 50;
+    // Calculate transform percentage based on slideCount
+    // Desktop (slideCount = 2): Move by 50% of carousel per slide (shows 2 images)
+    // Mobile (slideCount = 1): Move by 100% of carousel per slide (shows 1 image)
+    // Carousel width: Desktop = 200% (4 images at 50% each), Mobile = 400% (4 images at 100% each)
+    const percentPerSlide = 100 / slideCount; // 50% for desktop, 100% for mobile
+    const percent = indexSlide * percentPerSlide;
     indexCarousel.style.transform = `translateX(-${percent}%)`;
 }
 

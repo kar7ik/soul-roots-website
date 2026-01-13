@@ -379,6 +379,7 @@ body>section:first-of-type {
 #index-carousel {
     display: flex;
     width: 200%;
+    /* Desktop: 4 images at 50% each = 200% */
     min-width: 200%;
     overflow: visible;
     gap: var(--spacing-md);
@@ -404,17 +405,7 @@ body>section:first-of-type {
     opacity: 1;
 }
 
-/* Ensure carousel container allows proper scrolling */
-#index-carousel {
-    display: flex;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    gap: var(--spacing-md);
-    padding: 0;
-    box-sizing: border-box;
-    transition: transform 0.5s ease;
-}
+/* Duplicate rule removed - using the one above */
 
 .carousel-img:hover {
     transform: scale(1.02);
@@ -431,18 +422,43 @@ body>section:first-of-type {
 
     #index-carousel {
         gap: var(--spacing-sm);
-        width: 100%;
-        max-width: 100%;
+        width: 400%;
+        /* Mobile: 4 images at 100% each = 400% */
+        min-width: 400%;
+        max-width: 400%;
         padding: 0;
         margin: 0;
     }
 
-    /* Ensure carousel buttons don't overflow */
+    /* Ensure carousel buttons are visible and properly positioned on mobile */
     #index-prev-btn,
     #index-next-btn {
+        display: block !important;
+        /* Force visibility on mobile */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+        background-color: var(--color-sand);
+        border: none;
+        border-radius: 50%;
+        padding: var(--spacing-sm);
+        cursor: pointer;
+        box-shadow: var(--shadow-md);
+    }
+
+    #index-prev-btn {
         left: var(--spacing-xs);
+    }
+
+    #index-next-btn {
         right: var(--spacing-xs);
-        padding: var(--spacing-xs);
+    }
+
+    #index-prev-btn svg,
+    #index-next-btn svg {
+        width: 1.5rem;
+        height: 1.5rem;
     }
 }
 
