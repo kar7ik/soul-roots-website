@@ -186,9 +186,11 @@ header {
     box-sizing: border-box;
 }
 
-/* Translucent header after scroll */
+/* Translucent header after scroll.
+   background-color moved to @layer overrides (below) - header carries the
+   bg-sand Tailwind utility class (layer: utilities), which otherwise always
+   wins over this rule's background-color regardless of specificity. */
 header.scrolled {
-    background-color: rgba(246, 240, 230, 0.65);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -918,22 +920,6 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-/* Skip to content link */
-.skip-to-content {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--color-forest);
-    color: var(--color-white);
-    padding: var(--spacing-sm);
-    z-index: var(--z-tooltip);
-    text-decoration: none;
-}
-
-.skip-to-content:focus {
-    top: 0;
-}
-
 /* Honeypot field: off-screen rather than display:none, which some spam bots
    detect and skip. Also keeps the CSP style-src policy free of inline styles. */
 .hp-field {
@@ -967,8 +953,8 @@ img {
 
 /* This is a new layer, first declared here (after tailwind.css's "utilities"
    layer has already loaded), so it is ordered LAST and wins over every
-   Tailwind utility class regardless of specificity - needed for the two rules
-   below, which must beat sections' own bg-* utility classes. */
+   Tailwind utility class regardless of specificity - needed for the rules
+   below, which must beat elements' own bg-* utility classes. */
 @layer overrides {
     /* Alternate contrast backgrounds: semi-transparent so the blurred body
        background photo shows through slightly (frosted-glass effect). */
@@ -979,13 +965,23 @@ img {
     section:nth-of-type(odd) {
         background-color: rgba(246, 240, 230, 0.8);
     }
+
+    /* Translucent header background on scroll - beats the header's own
+       bg-sand utility class. */
+    header.scrolled {
+        background-color: rgba(246, 240, 230, 0.65);
+    }
 }
 
 /* Makes <picture> wrappers invisible to layout so the <img> inside is the
-   effective flex/grid item again (matches pre-<picture> sizing behavior).
-   Needed because #index-carousel is a flex container where .carousel-img's
+   effective flex item again (matches pre-<picture> sizing behavior). Needed
+   because #index-carousel is a flex container where .carousel-img's
    percentage-based width must resolve against the flex row, not an
-   intermediate <picture> box that flexbox (unlike grid) doesn't auto-stretch. */
-picture {
+   intermediate <picture> box that flexbox (unlike grid) doesn't auto-stretch.
+   Scoped to #index-carousel only: applying this globally also affected the
+   gallery grid, where display:contents on <picture> made its non-rendered
+   <source> child consume a slot in CSS Grid's auto-placement cursor, shifting
+   every image over by one cell (1/2/1 layout instead of a proper 3-column grid). */
+#index-carousel picture {
     display: contents;
 }
