@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
             name: form.name.value,
             email: form.email.value,
             retreat: form.retreat.value,
-            message: form.message.value
+            message: form.message.value,
+            'bot-field': form['bot-field'].value
         };
 
         try {

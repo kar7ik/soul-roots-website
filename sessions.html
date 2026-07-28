@@ -6,20 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sessions — SoulRoots</title>
     <meta name="description" content="SoulRoots Sessions coming soon with exclusive goodies and packages." />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="canonical" href="https://soulroots.netlify.app/sessions.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://soulroots.netlify.app/sessions.html" />
+    <meta property="og:title" content="Sessions — SoulRoots" />
+    <meta property="og:description" content="SoulRoots Sessions coming soon with exclusive goodies and packages." />
+    <meta property="og:image" content="https://soulroots.netlify.app/assets/images/home_background.jpg" />
+    <meta property="og:site_name" content="SoulRoots" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Sessions — SoulRoots" />
+    <meta name="twitter:description" content="SoulRoots Sessions coming soon with exclusive goodies and packages." />
+    <meta name="twitter:image" content="https://soulroots.netlify.app/assets/images/home_background.jpg" />
+
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.png" />
-    <script src="/assets/js/tailwind-config.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SoulRoots",
+      "url": "https://soulroots.netlify.app/",
+      "logo": "https://soulroots.netlify.app/assets/images/srj_logo.svg",
+      "email": "info@soulroots.com",
+      "description": "SoulRoots offers immersive yoga retreats and soulful journeys designed to nourish your mind, body, and spirit."
+    }
+    </script>
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-sand text-forest w-full mx-auto px-6 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="index.html" class="flex items-center space-x-2">
-            <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+            <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
             <span class="text-2xl font-bold text-forest">Soul Roots</span>
         </a>
         <nav class="flex items-center">
@@ -54,7 +86,8 @@
             class="w-4/5 bg-sand h-full flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 relative shadow-xl">
             <!-- Logo on top -->
             <li class="absolute top-8">
-                <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14 mx-auto">
+                <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56"
+                    class="h-14 w-14 mx-auto">
             </li>
             <!-- Close Button -->
             <button id="close-menu-btn"
@@ -77,19 +110,21 @@
         </ul>
     </div>
 
-    <!-- Sessions Coming Soon Section -->
-    <section class="max-w-2xl mx-auto py-32 px-6 flex flex-col items-center justify-center">
-        <div class="text-center">
-            <span class="inline-block mb-4 text-6xl text-gray-300">
-                🕊️
-            </span>
-            <h1 class="text-4xl font-extrabold mb-4 text-gray-400">Sessions Coming Soon!</h1>
-            <p class="text-lg text-gray-400 mb-8">
-                We're curating soulful Sessions and experiences for you.<br>
-                Stay tuned!
-            </p>
-        </div>
-    </section>
+    <main id="main-content">
+        <!-- Sessions Coming Soon Section -->
+        <section class="max-w-2xl mx-auto py-32 px-6 flex flex-col items-center justify-center">
+            <div class="text-center">
+                <span class="inline-block mb-4 text-6xl text-gray-300">
+                    🕊️
+                </span>
+                <h1 class="text-4xl font-extrabold mb-4 text-gray-600">Sessions Coming Soon!</h1>
+                <p class="text-lg text-gray-600 mb-8">
+                    We're curating soulful Sessions and experiences for you.<br>
+                    Stay tuned!
+                </p>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-sand text-charcoal mt-12">
@@ -98,7 +133,7 @@
             <!-- About / Logo -->
             <div>
                 <a href="index.html" class="flex items-center space-x-2 mb-4 inline-block">
-                    <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+                    <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
                     <span class="text-2xl font-bold text-forest">Soul Roots</span>
                 </a>
                 <p class="text-sage mt-2">

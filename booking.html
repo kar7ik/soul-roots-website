@@ -5,21 +5,53 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Booking — SoulRoots</title>
-    <meta name="description" content="Book your spot for a SoulRoots retreat." />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Book your spot for a SoulRoots yoga retreat. Choose from Mountain Awakening or Coastal Serenity." />
+    <link rel="canonical" href="https://soulroots.netlify.app/booking.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://soulroots.netlify.app/booking.html" />
+    <meta property="og:title" content="Booking — SoulRoots" />
+    <meta property="og:description" content="Book your spot for a SoulRoots yoga retreat. Choose from Mountain Awakening or Coastal Serenity." />
+    <meta property="og:image" content="https://soulroots.netlify.app/assets/images/home_background.jpg" />
+    <meta property="og:site_name" content="SoulRoots" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Booking — SoulRoots" />
+    <meta name="twitter:description" content="Book your spot for a SoulRoots yoga retreat. Choose from Mountain Awakening or Coastal Serenity." />
+    <meta name="twitter:image" content="https://soulroots.netlify.app/assets/images/home_background.jpg" />
+
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.png" />
-    <script src="/assets/js/tailwind-config.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SoulRoots",
+      "url": "https://soulroots.netlify.app/",
+      "logo": "https://soulroots.netlify.app/assets/images/srj_logo.svg",
+      "email": "info@soulroots.com",
+      "description": "SoulRoots offers immersive yoga retreats and soulful journeys designed to nourish your mind, body, and spirit."
+    }
+    </script>
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-sand text-forest w-full mx-auto px-6 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="index.html" class="flex items-center space-x-2">
-            <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+            <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
             <span class="text-2xl font-bold text-forest">Soul Roots</span>
         </a>
         <nav class="flex items-center">
@@ -54,7 +86,8 @@
             class="w-4/5 bg-sand h-full flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 relative shadow-xl">
             <!-- Logo on top -->
             <li class="absolute top-8">
-                <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14 mx-auto">
+                <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56"
+                    class="h-14 w-14 mx-auto">
             </li>
             <!-- Close Button -->
             <button id="close-menu-btn"
@@ -77,51 +110,53 @@
         </ul>
     </div>
 
-    <!-- Booking Section -->
-    <section class="max-w-2xl mx-auto py-20 px-6">
-        <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14 mx-auto mb-6">
-        <h1 class="text-4xl font-extrabold mb-6 text-green-800 text-center">Book Your Retreat</h1>
-        <form id="booking-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
-                type="text" name="bot-field" style="display:none">
-            <div class="mb-4">
-                <label class="block text-charcoal text-sm font-bold mb-2" for="name">Name</label>
+    <main id="main-content">
+        <!-- Booking Section -->
+        <section class="max-w-2xl mx-auto py-20 px-6">
+            <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14 mx-auto mb-6">
+            <h1 class="text-4xl font-extrabold mb-6 text-green-800 text-center">Book Your Retreat</h1>
+            <form id="booking-form" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                 <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
-                    id="name" name="name" type="text" required>
-            </div>
-            <div class="mb-4">
-                <label class="block text-charcoal text-sm font-bold mb-2" for="email">Email</label>
-                <input
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
-                    id="email" name="email" type="email" required>
-            </div>
-            <div class="mb-4">
-                <label class="block text-charcoal text-sm font-bold mb-2" for="retreat">Retreat</label>
-                <select
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
-                    id="retreat" name="retreat" required>
-                    <option value="">Select a retreat</option>
-                    <option value="mountain">Mountain Awakening</option>
-                    <option value="coastal">Coastal Serenity</option>
-                </select>
-            </div>
-            <div class="mb-6">
-                <label class="block text-charcoal text-sm font-bold mb-2" for="message">Message</label>
-                <textarea
-                    class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
-                    id="message" name="message" rows="4"></textarea>
-            </div>
-            <div class="flex items-center justify-center">
-                <button
-                    class="bg-forest hover:bg-terracotta text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
-                    Book Now
-                </button>
-            </div>
-        </form>
-    </section>
+                    class="hp-field"
+                    type="text" name="bot-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div class="mb-4">
+                    <label class="block text-charcoal text-sm font-bold mb-2" for="name">Name</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
+                        id="name" name="name" type="text" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-charcoal text-sm font-bold mb-2" for="email">Email</label>
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
+                        id="email" name="email" type="email" required>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-charcoal text-sm font-bold mb-2" for="retreat">Retreat</label>
+                    <select
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
+                        id="retreat" name="retreat" required>
+                        <option value="">Select a retreat</option>
+                        <option value="mountain">Mountain Awakening</option>
+                        <option value="coastal">Coastal Serenity</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-charcoal text-sm font-bold mb-2" for="message">Message</label>
+                    <textarea
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-charcoal leading-tight focus:outline-none focus:shadow-outline"
+                        id="message" name="message" rows="4"></textarea>
+                </div>
+                <div class="flex items-center justify-center">
+                    <button
+                        class="bg-forest hover:bg-terracotta text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+                        type="submit">
+                        Book Now
+                    </button>
+                </div>
+            </form>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-sand text-charcoal mt-12">
@@ -130,7 +165,7 @@
             <!-- About / Logo -->
             <div>
                 <a href="index.html" class="flex items-center space-x-2 mb-4 inline-block">
-                    <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+                    <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
                     <span class="text-2xl font-bold text-forest">Soul Roots</span>
                 </a>
                 <p class="text-sage mt-2">

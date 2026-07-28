@@ -1,7 +1,7 @@
 // Contact form handler
 document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.querySelector('form[action="#"]');
-    
+    const contactForm = document.getElementById('contact-form');
+
     if (contactForm) {
         contactForm.addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 name: form.name.value,
                 email: form.email.value,
                 message: form.message.value,
-                type: 'contact' // Distinguish from booking
+                type: 'contact', // Distinguish from booking
+                'bot-field': form['bot-field'].value
             };
             
             try {

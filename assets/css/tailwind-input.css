@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+/* Custom brand theme — replaces the old assets/js/tailwind-config.js
+   (that file only worked with the CDN build and has been removed). */
+@theme {
+    --color-sand: #F6F0E6;
+    --color-forest: #1F6E4F;
+    --color-ochre: #C77C2C;
+    --color-terracotta: #D96C3B;
+    --color-charcoal: #333333;
+    /* Darkened from the original #A3B18A: the lighter tone failed WCAG AA
+       contrast (~2:1) against the sand background used under text-sage. */
+    --color-sage: #5B6F4A;
+    --color-clay: #B86B4B;
+}

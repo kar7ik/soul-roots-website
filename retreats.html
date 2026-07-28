@@ -5,21 +5,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Retreats — SoulRoots</title>
-    <meta name="description" content="Explore SoulRoots yoga retreats and spiritual journeys." />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Explore SoulRoots yoga retreats and spiritual journeys, including Mountain Awakening and Coastal Serenity." />
+    <link rel="canonical" href="https://soulroots.netlify.app/retreats.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://soulroots.netlify.app/retreats.html" />
+    <meta property="og:title" content="Retreats — SoulRoots" />
+    <meta property="og:description" content="Explore SoulRoots yoga retreats and spiritual journeys, including Mountain Awakening and Coastal Serenity." />
+    <meta property="og:image" content="https://soulroots.netlify.app/assets/images/home_background.jpg" />
+    <meta property="og:site_name" content="SoulRoots" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Retreats — SoulRoots" />
+    <meta name="twitter:description" content="Explore SoulRoots yoga retreats and spiritual journeys, including Mountain Awakening and Coastal Serenity." />
+    <meta name="twitter:image" content="https://soulroots.netlify.app/assets/images/home_background.jpg" />
+
+    <link rel="stylesheet" href="assets/css/tailwind.css" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.png" />
-    <script src="/assets/js/tailwind-config.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SoulRoots",
+      "url": "https://soulroots.netlify.app/",
+      "logo": "https://soulroots.netlify.app/assets/images/srj_logo.svg",
+      "email": "info@soulroots.com",
+      "description": "SoulRoots offers immersive yoga retreats and soulful journeys designed to nourish your mind, body, and spirit."
+    }
+    </script>
+    <!-- NOTE: these Event dates mirror the visible copy below (Oct/Nov 2025), which is already
+         in the past relative to today. Update both the visible dates and this JSON-LD together
+         once the next retreat schedule is confirmed. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Mountain Awakening",
+      "description": "A 7-day yoga and hiking retreat in the Himalayas. Daily yoga, meditation, and guided treks.",
+      "startDate": "2025-10-10",
+      "endDate": "2025-10-17",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Himalayas"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "SoulRoots",
+        "url": "https://soulroots.netlify.app/"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Coastal Serenity",
+      "description": "Relax by the sea with restorative yoga, mindfulness workshops, and nourishing meals.",
+      "startDate": "2025-11-05",
+      "endDate": "2025-11-12",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Coastal retreat venue"
+      },
+      "organizer": {
+        "@type": "Organization",
+        "name": "SoulRoots",
+        "url": "https://soulroots.netlify.app/"
+      }
+    }
+    </script>
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-sand text-forest w-full mx-auto px-6 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="index.html" class="flex items-center space-x-2">
-            <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+            <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
             <span class="text-2xl font-bold text-forest">Soul Roots</span>
         </a>
         <nav class="flex items-center">
@@ -54,7 +131,8 @@
             class="w-4/5 bg-sand h-full flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 relative shadow-xl">
             <!-- Logo on top -->
             <li class="absolute top-8">
-                <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14 mx-auto">
+                <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56"
+                    class="h-14 w-14 mx-auto">
             </li>
             <!-- Close Button -->
             <button id="close-menu-btn"
@@ -78,28 +156,30 @@
         </ul>
     </div>
 
-    <!-- Retreats Section -->
-    <section class="max-w-4xl mx-auto text-center py-20 px-6">
-        <h1 class="text-4xl font-extrabold mb-6 text-green-800">Our Retreats</h1>
-        <p class="text-lg text-charcoal mb-8">
-            Discover our upcoming yoga retreats and spiritual journeys. Each retreat is designed to help you unwind,
-            grow, and connect with a like-minded community.
-        </p>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div id="mountain" class="bg-green-50 p-6 rounded-lg shadow">
-                <h2 class="text-2xl font-bold mb-2 text-forest">Mountain Awakening</h2>
-                <p class="text-charcoal mb-2">A 7-day yoga and hiking retreat in the Himalayas. Daily yoga, meditation,
-                    and guided treks.</p>
-                <span class="text-green-800 font-semibold">Dates: Oct 10–17, 2025</span>
+    <main id="main-content">
+        <!-- Retreats Section -->
+        <section class="max-w-4xl mx-auto text-center py-20 px-6">
+            <h1 class="text-4xl font-extrabold mb-6 text-green-800">Our Retreats</h1>
+            <p class="text-lg text-charcoal mb-8">
+                Discover our upcoming yoga retreats and spiritual journeys. Each retreat is designed to help you unwind,
+                grow, and connect with a like-minded community.
+            </p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div id="mountain" class="bg-green-50 p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold mb-2 text-forest">Mountain Awakening</h2>
+                    <p class="text-charcoal mb-2">A 7-day yoga and hiking retreat in the Himalayas. Daily yoga, meditation,
+                        and guided treks.</p>
+                    <span class="text-green-800 font-semibold">Dates: Oct 10–17, 2025</span>
+                </div>
+                <div id="coastal" class="bg-green-50 p-6 rounded-lg shadow">
+                    <h2 class="text-2xl font-bold mb-2 text-forest">Coastal Serenity</h2>
+                    <p class="text-charcoal mb-2">Relax by the sea with restorative yoga, mindfulness workshops, and
+                        nourishing meals.</p>
+                    <span class="text-green-800 font-semibold">Dates: Nov 5–12, 2025</span>
+                </div>
             </div>
-            <div id="coastal" class="bg-green-50 p-6 rounded-lg shadow">
-                <h2 class="text-2xl font-bold mb-2 text-forest">Coastal Serenity</h2>
-                <p class="text-charcoal mb-2">Relax by the sea with restorative yoga, mindfulness workshops, and
-                    nourishing meals.</p>
-                <span class="text-green-800 font-semibold">Dates: Nov 5–12, 2025</span>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-sand text-charcoal mt-12">
@@ -108,7 +188,7 @@
             <!-- About / Logo -->
             <div>
                 <a href="index.html" class="flex items-center space-x-2 mb-4 inline-block">
-                    <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+                    <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
                     <span class="text-2xl font-bold text-forest">Soul Roots</span>
                 </a>
                 <p class="text-sage mt-2">

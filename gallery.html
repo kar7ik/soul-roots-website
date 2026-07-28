@@ -4,21 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SoulRoots Gallery</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Gallery — SoulRoots</title>
+    <meta name="description" content="Browse photos from SoulRoots yoga retreats — real moments from our mountain and coastal retreats." />
+    <link rel="canonical" href="https://soulroots.netlify.app/gallery.html" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://soulroots.netlify.app/gallery.html" />
+    <meta property="og:title" content="Gallery — SoulRoots" />
+    <meta property="og:description" content="Browse photos from SoulRoots yoga retreats — real moments from our mountain and coastal retreats." />
+    <meta property="og:image" content="https://soulroots.netlify.app/assets/images/gallery_image_1_yoga.jpg" />
+    <meta property="og:site_name" content="SoulRoots" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Gallery — SoulRoots" />
+    <meta name="twitter:description" content="Browse photos from SoulRoots yoga retreats — real moments from our mountain and coastal retreats." />
+    <meta name="twitter:image" content="https://soulroots.netlify.app/assets/images/gallery_image_1_yoga.jpg" />
+
+    <link rel="stylesheet" href="assets/css/tailwind.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.png" />
-    <script src="/assets/js/tailwind-config.js"></script>
+    <link rel="icon" type="image/svg+xml" href="/assets/images/srj_logo.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "SoulRoots",
+      "url": "https://soulroots.netlify.app/",
+      "logo": "https://soulroots.netlify.app/assets/images/srj_logo.svg",
+      "email": "info@soulroots.com",
+      "description": "SoulRoots offers immersive yoga retreats and soulful journeys designed to nourish your mind, body, and spirit."
+    }
+    </script>
 </head>
 
 <body class="bg-white text-gray-900 font-sans">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
 
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-sand text-forest w-full mx-auto px-6 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="index.html" class="flex items-center space-x-2">
-            <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+            <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
             <span class="text-2xl font-bold text-forest">Soul Roots</span>
         </a>
         <nav class="flex items-center">
@@ -53,7 +86,8 @@
             class="w-4/5 bg-sand h-full flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 relative shadow-xl">
             <!-- Logo on top -->
             <li class="absolute top-8">
-                <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14 mx-auto">
+                <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56"
+                    class="h-14 w-14 mx-auto">
             </li>
             <!-- Close Button -->
             <button id="close-menu-btn"
@@ -76,39 +110,58 @@
         </ul>
     </div>
 
-    <!-- Gallery Grid -->
-    <section class="max-w-6xl mx-auto py-16 px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <img src="/assets/images/gallery_image_1_yoga.jpg" alt="Yoga Retreat Gallery Image 1"
-                class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer" loading="lazy">
-            <img src="/assets/images/gallery_image_2_yoga.jpg" alt="Yoga Retreat Gallery Image 2"
-                class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer" loading="lazy">
-            <img src="/assets/images/gallery_image_3_yoga.jpg" alt="Yoga Retreat Gallery Image 3"
-                class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer" loading="lazy">
-            <img src="/assets/images/gallery_image_4_yoga.jpg" alt="Yoga Retreat Gallery Image 4"
-                class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer" loading="lazy">
+    <main id="main-content">
+        <!-- Gallery Grid -->
+        <section class="max-w-6xl mx-auto py-16 px-4">
+            <h1 class="text-4xl font-extrabold mb-8 text-green-800 text-center">Gallery</h1>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <picture>
+                    <source srcset="/assets/images/gallery_image_1_yoga.webp" type="image/webp">
+                    <img src="/assets/images/gallery_image_1_yoga.jpg" alt="Yoga Retreat Gallery Image 1" width="1600"
+                        height="1200" class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer"
+                        loading="lazy" decoding="async">
+                </picture>
+                <picture>
+                    <source srcset="/assets/images/gallery_image_2_yoga.webp" type="image/webp">
+                    <img src="/assets/images/gallery_image_2_yoga.jpg" alt="Yoga Retreat Gallery Image 2" width="1600"
+                        height="720" class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer"
+                        loading="lazy" decoding="async">
+                </picture>
+                <picture>
+                    <source srcset="/assets/images/gallery_image_3_yoga.webp" type="image/webp">
+                    <img src="/assets/images/gallery_image_3_yoga.jpg" alt="Yoga Retreat Gallery Image 3" width="1600"
+                        height="1200" class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer"
+                        loading="lazy" decoding="async">
+                </picture>
+                <picture>
+                    <source srcset="/assets/images/gallery_image_4_yoga.webp" type="image/webp">
+                    <img src="/assets/images/gallery_image_4_yoga.jpg" alt="Yoga Retreat Gallery Image 4" width="1600"
+                        height="1550" class="gallery-item w-full h-64 object-cover rounded-lg cursor-pointer"
+                        loading="lazy" decoding="async">
+                </picture>
 
-            <!-- Add more images as needed -->
-        </div>
-    </section>
+                <!-- Add more images as needed -->
+            </div>
+        </section>
+    </main>
 
     <!-- Lightbox Modal -->
     <div id="lightbox" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
-        <span id="close-lightbox"
-            class="absolute top-6 right-6 text-white text-3xl cursor-pointer font-bold hover:text-gray-300 transition z-10">&times;</span>
-        <button id="lightbox-prev"
+        <button id="close-lightbox" type="button" aria-label="Close gallery"
+            class="absolute top-6 right-6 text-white text-3xl cursor-pointer font-bold hover:text-gray-300 transition z-10">&times;</button>
+        <button id="lightbox-prev" aria-label="Previous image"
             class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition z-10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
         </button>
-        <button id="lightbox-next"
+        <button id="lightbox-next" aria-label="Next image"
             class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white rounded-full p-3 transition z-10">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
         </button>
-        <img id="lightbox-img" class="max-h-[90%] max-w-[90%] rounded-lg">
+        <img id="lightbox-img" class="max-h-[90%] max-w-[90%] rounded-lg" alt="">
     </div>
     <!-- Footer -->
     <footer class="bg-sand text-charcoal mt-12">
@@ -117,7 +170,7 @@
             <!-- About / Logo -->
             <div>
                 <a href="index.html" class="flex items-center space-x-2 mb-4 inline-block">
-                    <img src="/assets/images/srj_logo.png" alt="SoulRoots Logo" class="h-14 w-14">
+                    <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
                     <span class="text-2xl font-bold text-forest">Soul Roots</span>
                 </a>
                 <p class="text-sage mt-2">

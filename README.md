@@ -15,15 +15,21 @@ soul-roots-website/
 ├── contact.html        # Contact page
 ├── faq.html           # FAQ page
 ├── thankyou.html      # Thank you page
+├── 404.html           # Not found page
+├── robots.txt          # Search engine crawl rules
+├── sitemap.xml         # Search engine sitemap
 ├── assets/
 │   ├── css/
-│   │   └── styles.css  # Custom styles
+│   │   ├── tailwind-input.css  # Tailwind source (edit this)
+│   │   ├── tailwind.css        # Compiled Tailwind output (generated, do not edit)
+│   │   └── styles.css          # Custom styles
 │   ├── js/
 │   │   ├── main.js     # Main navigation & carousel
 │   │   ├── booking-form.js  # Booking form handler
+│   │   ├── contact-form.js  # Contact form handler
 │   │   ├── gallery.js  # Gallery lightbox
-│   │   └── tailwind-config.js  # Tailwind custom colors
-│   └── images/         # Image assets
+│   │   └── toast.js    # Toast notifications
+│   └── images/         # Image assets (JPG/PNG originals + WebP variants)
 ├── netlify/
 │   └── functions/
 │       └── booking-proxy.js  # Netlify function for form submissions
@@ -33,19 +39,21 @@ soul-roots-website/
 
 ## 🎨 Features
 
-- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **Responsive Design**: Mobile-first design with Tailwind CSS (compiled build, not the CDN script)
 - **Image Carousel**: Interactive carousel on homepage
 - **Gallery Lightbox**: Click images to view in fullscreen
-- **Booking Form**: Integrated form that submits to Google Apps Script via Netlify function
+- **Booking Form**: Integrated form that submits to Google Apps Script via Netlify function, with honeypot spam protection
 - **Smooth Navigation**: Sticky header with scroll effects
 - **Mobile Menu**: Slide-out navigation menu for mobile devices
+- **SEO**: canonical URLs, Open Graph/Twitter tags, JSON-LD structured data, robots.txt, sitemap.xml
+- **Security headers**: CSP, HSTS, Permissions-Policy configured in `netlify.toml`
 
 ## 🚀 Local Development
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
-- npm or yarn
+- Node.js (v20 or higher — required by Tailwind CSS v4)
+- npm
 
 ### Setup
 
@@ -54,16 +62,25 @@ soul-roots-website/
    npm install
    ```
 
-2. **Start local development server:**
+2. **Set up environment variables:**
+   ```bash
+   cp .env.example .env
+   # then edit .env and set GOOGLE_SCRIPT_URL to your Google Apps Script deployment URL
+   ```
+
+3. **Start local development server:**
    ```bash
    npm run dev
    ```
-   
-   This will start Netlify Dev, which:
+
+   This compiles the Tailwind CSS, then starts Netlify Dev, which:
    - Serves your static files
    - Runs Netlify Functions locally
    - Provides hot-reloading
    - Accessible at `http://localhost:8888`
+
+   While actively editing Tailwind classes, run `npm run watch:css` in a second terminal to
+   recompile `assets/css/tailwind.css` on every save.
 
 ### Alternative: Simple HTTP Server (Static Files Only)
 
@@ -73,9 +90,6 @@ If you only want to test the static site without Netlify Functions:
 ```bash
 # Python 3
 python3 -m http.server 8000
-
-# Python 2
-python -m SimpleHTTPServer 8000
 ```
 
 **Using Node.js (http-server):**
@@ -83,12 +97,8 @@ python -m SimpleHTTPServer 8000
 npx http-server -p 8000
 ```
 
-**Using PHP:**
-```bash
-php -S localhost:8000
-```
-
-Then open `http://localhost:8000` in your browser.
+Then open `http://localhost:8000` in your browser. Run `npm run build` first so
+`assets/css/tailwind.css` exists.
 
 > **Note**: The booking form will not work with a simple HTTP server since it requires the Netlify function. Use `npm run dev` to test the full functionality.
 
@@ -129,22 +139,28 @@ Then open `http://localhost:8000` in your browser.
 
 ### Netlify Function
 
-The booking form uses a Netlify function (`netlify/functions/booking-proxy.js`) that proxies form submissions to a Google Apps Script endpoint. The function:
+The booking and contact forms both post to a Netlify function (`netlify/functions/booking-proxy.js`) that proxies submissions to a Google Apps Script endpoint. The function:
 
 - Handles CORS preflight requests
-- Forwards POST requests to Google Apps Script
+- Rejects submissions where the hidden honeypot field is filled in (spam bots)
+- Requires a `GOOGLE_SCRIPT_URL` environment variable — set it in `.env` locally and in
+  Netlify's Site settings > Environment variables for deploys
+- Forwards valid POST requests to Google Apps Script
 - Returns appropriate responses
 
 ### Custom Colors (Tailwind)
 
-Custom colors are defined in `assets/js/tailwind-config.js`:
+Custom colors are defined in the `@theme` block of `assets/css/tailwind-input.css`:
 - `sand`: #F6F0E6
 - `forest`: #1F6E4F
 - `ochre`: #C77C2C
 - `terracotta`: #D96C3B
 - `charcoal`: #333333
-- `sage`: #A3B18A
+- `sage`: #5B6F4A
 - `clay`: #B86B4B
+
+After changing a color, run `npm run build:css` (or keep `npm run watch:css` running) to
+regenerate `assets/css/tailwind.css`.
 
 ## 📝 Pages
 
@@ -160,11 +176,11 @@ Custom colors are defined in `assets/js/tailwind-config.js`:
 
 ## 🐛 Troubleshooting
 
-### Booking form not working locally
+### Booking or contact form not working locally
 
 - Make sure you're using `npm run dev` (Netlify Dev) instead of a simple HTTP server
 - Check that the Netlify function is running (should see in terminal)
-- Verify the Google Apps Script URL in `netlify/functions/booking-proxy.js`
+- Verify `GOOGLE_SCRIPT_URL` is set in your `.env` file (see `.env.example`)
 
 ### Images not loading
 
@@ -173,9 +189,23 @@ Custom colors are defined in `assets/js/tailwind-config.js`:
 
 ### Styles not applying
 
-- Verify Tailwind CDN is loading in the browser console
-- Check that `tailwind-config.js` is loaded after Tailwind CDN
+- Run `npm run build:css` and confirm `assets/css/tailwind.css` was regenerated
+- Check the browser console for a 404 on `assets/css/tailwind.css`
 - Clear browser cache
+
+## 🌐 Before going live
+
+Several files use `https://soulroots.netlify.app` as a placeholder domain (canonical URLs,
+Open Graph tags, `robots.txt`, `sitemap.xml`). Once the real production domain is decided,
+find-and-replace that placeholder across the project:
+
+```bash
+grep -rl "soulroots.netlify.app" --include="*.html" --include="*.txt" --include="*.xml" . \
+  | xargs sed -i '' 's#https://soulroots.netlify.app#https://YOUR-REAL-DOMAIN#g'
+```
+
+Also note: the retreat dates on `retreats.html` (Oct/Nov 2025) are in the past — update the
+visible copy and the matching `Event` JSON-LD block before relying on this page for bookings.
 
 ## 📄 License
 

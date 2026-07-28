@@ -17,6 +17,7 @@ function openLightbox(index) {
     
     currentImageIndex = index;
     lightboxImg.src = galleryImages[currentImageIndex].src;
+    lightboxImg.alt = galleryImages[currentImageIndex].alt;
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
     

@@ -17,8 +17,36 @@ export async function handler(event, context) {
         try {
             const data = JSON.parse(event.body);
 
+            // Honeypot: real visitors never fill this hidden field. Spam bots that
+            // fill every input do. Pretend success so they don't learn to skip it,
+            // but drop the submission instead of forwarding it.
+            if (data["bot-field"]) {
+                return {
+                    statusCode: 200,
+                    headers: { "Access-Control-Allow-Origin": "*" },
+                    body: "Success",
+                };
+            }
+
+            if (!data.name || !data.email) {
+                return {
+                    statusCode: 400,
+                    headers: { "Access-Control-Allow-Origin": "*" },
+                    body: "Error: name and email are required",
+                };
+            }
+
+            const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
+            if (!scriptUrl) {
+                return {
+                    statusCode: 500,
+                    headers: { "Access-Control-Allow-Origin": "*" },
+                    body: "Error: GOOGLE_SCRIPT_URL is not configured",
+                };
+            }
+
             // Forward to Google Apps Script endpoint
-            const response = await fetch("https://script.google.com/macros/s/AKfycbx0aT6FzpsStIUMDIXZSQVrKTvg_SHZphvC5zyJPVdxFxZ6-DilpsOQCiBTvUP4sNCF/exec", {
+            const response = await fetch(scriptUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
