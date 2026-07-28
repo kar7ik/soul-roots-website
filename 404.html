@@ -19,6 +19,69 @@
 
 <body class="bg-white text-gray-900 font-sans flex flex-col min-h-screen">
 
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-sand text-forest w-full mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center space-x-2">
+            <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56" class="h-14 w-14">
+            <span class="text-2xl font-bold text-forest">Soul Roots</span>
+        </a>
+        <nav class="flex items-center">
+            <ul class="hidden md:flex space-x-8 text-lg">
+                <li><a href="index.html" class="hover:text-ochre">Home</a></li>
+                <li><a href="about.html" class="hover:text-ochre">About</a></li>
+                <li><a href="retreats.html" class="hover:text-ochre">Retreats</a></li>
+                <li><a href="booking.html" class="hover:text-ochre">Booking</a></li>
+                <li><a href="sessions.html" class="hover:text-ochre">Sessions</a></li>
+                <li><a href="gallery.html" class="hover:text-ochre">Gallery</a></li>
+                <li><a href="contact.html" class="hover:text-ochre">Contact</a></li>
+                <li><a href="faq.html" class="hover:text-ochre">FAQ</a></li>
+            </ul>
+            <button id="menu-btn" class="md:hidden flex items-center focus:outline-none ml-4" aria-label="Toggle menu"
+                aria-expanded="false">
+                <svg class="w-8 h-8 text-forest" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Partial Overlay Menu -->
+    <div id="nav-menu" class="fixed inset-0 z-50 flex hidden md:hidden transition-all duration-300">
+        <!-- Blurred background (left side, 20%) -->
+        <div class="w-1/5 bg-sand/30 backdrop-blur-sm h-full"></div>
+        <!-- Menu (right side, 80%) -->
+        <ul
+            class="w-4/5 bg-sand h-full flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-green-800 relative shadow-xl">
+            <!-- Logo on top -->
+            <li class="absolute top-8">
+                <img src="/assets/images/srj_logo.svg" alt="SoulRoots Logo" width="56" height="56"
+                    class="h-14 w-14 mx-auto">
+            </li>
+            <!-- Close Button -->
+            <button id="close-menu-btn"
+                class="absolute top-6 right-6 text-forest hover:text-green-900 focus:outline-none"
+                aria-label="Close menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                    <line x1="6" y1="18" x2="18" y2="6" />
+                </svg>
+            </button>
+            <li><a href="index.html" class="hover:text-ochre">Home</a></li>
+            <li><a href="about.html" class="hover:text-ochre">About</a></li>
+            <li><a href="retreats.html" class="hover:text-ochre">Retreats</a></li>
+            <li><a href="booking.html" class="hover:text-ochre">Booking</a></li>
+            <li><a href="sessions.html" class="hover:text-ochre">Sessions</a></li>
+            <li><a href="gallery.html" class="hover:text-ochre">Gallery</a></li>
+            <li><a href="contact.html" class="hover:text-ochre">Contact</a></li>
+            <li><a href="faq.html" class="hover:text-ochre">FAQ</a></li>
+        </ul>
+    </div>
+
     <!-- Main Content -->
     <main id="main-content" class="flex-grow flex items-center justify-center px-6">
         <div class="max-w-md mx-auto bg-white shadow-lg rounded-lg p-8 text-center">
@@ -86,6 +149,8 @@
             </div>
         </div>
     </footer>
+
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>
