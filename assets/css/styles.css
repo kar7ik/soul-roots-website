@@ -60,17 +60,17 @@
     --transition-slow: 500ms ease;
 
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-card-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-card-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-card-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-card-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 
     /* Border Radius */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --radius-full: 9999px;
+    --radius-card-sm: 0.25rem;
+    --radius-card-md: 0.5rem;
+    --radius-card-lg: 0.75rem;
+    --radius-card-xl: 1rem;
+    --radius-card-full: 9999px;
 
     /* Z-index Scale */
     --z-base: 1;
@@ -178,7 +178,7 @@ header {
         box-shadow var(--transition-base),
         border-radius var(--transition-base);
     border-bottom: 1px solid transparent;
-    border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+    border-radius: 0 0 var(--radius-card-xl) var(--radius-card-xl);
     margin: 0 var(--spacing-md);
     margin-top: 0;
     width: calc(100% - 2 * var(--spacing-md));
@@ -234,7 +234,7 @@ header nav ul li a[aria-current="page"]::after {
     right: 0;
     height: 2px;
     background-color: var(--color-ochre);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-card-full);
     display: block;
 }
 
@@ -251,8 +251,8 @@ header nav ul li a[aria-current="page"]::after {
 
 section {
     backdrop-filter: blur(4px);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-card-xl);
+    box-shadow: var(--shadow-card-lg);
     margin-bottom: var(--spacing-2xl);
     padding: var(--spacing-xl);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
@@ -263,22 +263,19 @@ section {
 
 section:hover {
     transform: translateY(-2px);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-card-xl);
 }
 
-/* Alternate contrast backgrounds */
-section:nth-of-type(even) {
-    background-color: rgba(255, 255, 255, 0.95);
-}
-
-section:nth-of-type(odd) {
-    background-color: rgba(246, 240, 230, 0.8);
-}
+/* Alternate contrast backgrounds - moved to @layer overrides at the end of this
+   file, since they need to beat sections' own bg-* Tailwind utility classes
+   (layer: utilities), and @layer components can never win over @layer utilities
+   regardless of selector specificity. See plan:
+   ~/.claude/plans/first-have-a-deeper-playful-journal.md */
 
 /* Images inside sections */
 section img {
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-card-md);
+    box-shadow: var(--shadow-card-md);
     transition: transform var(--transition-base);
 }
 
@@ -341,13 +338,16 @@ object {
     }
 }
 
-/* Gap for Hero under header */
-body>section:first-of-type {
+/* Gap for Hero under header.
+   Selector targets main>section (not body>section) because page content is
+   wrapped in <main id="main-content"> for accessibility landmarks - section is
+   no longer a direct child of body. */
+main>section:first-of-type {
     margin-top: var(--spacing-3xl);
 }
 
 @media (min-width: 768px) {
-    body>section:first-of-type {
+    main>section:first-of-type {
         margin-top: var(--spacing-4xl);
     }
 }
@@ -405,10 +405,10 @@ body>section:first-of-type {
     min-width: calc(25% - var(--spacing-sm));
     height: 450px;
     object-fit: cover;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-card-lg);
     flex-shrink: 0;
     transition: transform var(--transition-base);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-card-lg);
     box-sizing: border-box;
     display: block;
     opacity: 1;
@@ -418,7 +418,7 @@ body>section:first-of-type {
 
 .carousel-img:hover {
     transform: scale(1.02);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-card-xl);
 }
 
 @media (max-width: 768px) {
@@ -457,7 +457,7 @@ body>section:first-of-type {
         border-radius: 50%;
         padding: var(--spacing-sm);
         cursor: pointer;
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--shadow-card-md);
     }
 
     #index-prev-btn {
@@ -499,7 +499,7 @@ body>section:first-of-type {
     max-height: 90vh;
     max-width: 90vw;
     object-fit: contain;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-card-lg);
 }
 
 #lightbox-prev,
@@ -678,9 +678,9 @@ footer a:hover {
 
 .toast {
     background-color: var(--color-white);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-card-lg);
     padding: var(--spacing-md) var(--spacing-lg);
-    box-shadow: var(--shadow-xl);
+    box-shadow: var(--shadow-card-xl);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -812,7 +812,7 @@ html {
     padding: var(--spacing-sm) var(--spacing-lg);
     font-weight: 600;
     text-align: center;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-card-full);
     transition: all var(--transition-base);
     cursor: pointer;
     border: none;
@@ -829,7 +829,7 @@ html {
 .btn-primary:hover {
     background-color: var(--color-terracotta);
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-card-lg);
 }
 
 .btn-primary:active {
@@ -858,7 +858,7 @@ textarea {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
     border: 2px solid var(--color-gray-300);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-card-md);
     font-size: var(--font-size-base);
     line-height: 1.5;
     color: var(--color-charcoal);
@@ -893,15 +893,15 @@ label {
 
 .card {
     background-color: var(--color-white);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-card-lg);
     padding: var(--spacing-xl);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-card-md);
     transition: transform var(--transition-base), box-shadow var(--transition-base);
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-card-lg);
 }
 
 /* =========================
@@ -964,3 +964,28 @@ img {
 }
 
 } /* end @layer components */
+
+/* This is a new layer, first declared here (after tailwind.css's "utilities"
+   layer has already loaded), so it is ordered LAST and wins over every
+   Tailwind utility class regardless of specificity - needed for the two rules
+   below, which must beat sections' own bg-* utility classes. */
+@layer overrides {
+    /* Alternate contrast backgrounds: semi-transparent so the blurred body
+       background photo shows through slightly (frosted-glass effect). */
+    section:nth-of-type(even) {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    section:nth-of-type(odd) {
+        background-color: rgba(246, 240, 230, 0.8);
+    }
+}
+
+/* Makes <picture> wrappers invisible to layout so the <img> inside is the
+   effective flex/grid item again (matches pre-<picture> sizing behavior).
+   Needed because #index-carousel is a flex container where .carousel-img's
+   percentage-based width must resolve against the flex row, not an
+   intermediate <picture> box that flexbox (unlike grid) doesn't auto-stretch. */
+picture {
+    display: contents;
+}
