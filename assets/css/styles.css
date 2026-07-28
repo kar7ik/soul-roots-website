@@ -1,3 +1,10 @@
+/* Wrapped in the "components" layer so Tailwind utility classes (layer:
+   utilities) correctly take precedence over these generic element-selector
+   defaults, matching the cascade behavior this file relied on before the
+   Tailwind CDN -> compiled build migration. See plan:
+   ~/.claude/plans/first-have-a-deeper-playful-journal.md */
+@layer components {
+
 /* =========================
    CSS CUSTOM PROPERTIES (DESIGN TOKENS)
 ========================= */
@@ -955,3 +962,5 @@ img {
     max-width: 100%;
     height: auto;
 }
+
+} /* end @layer components */
